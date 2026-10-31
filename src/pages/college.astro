@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ProofStrip from '../components/ProofStrip.astro';
+import EvalOffer from '../components/EvalOffer.astro';
 import { college, schedule, site } from '../site.config';
 
 const sessions = schedule.classes.filter((c) => /college/i.test(c.name));
@@ -56,6 +57,8 @@ const service = {
   </section>
 
   <ProofStrip />
+
+  <EvalOffer />
 
   <section class="section">
     <div class="wrap">

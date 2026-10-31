@@ -5,7 +5,9 @@ import FaqList from '../components/FaqList.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ScheduleTable from '../components/ScheduleTable.astro';
 import ProofStrip from '../components/ProofStrip.astro';
+import EvalOffer from '../components/EvalOffer.astro';
 import { site, schedule } from '../site.config';
+import { sports } from '../sports';
 
 const pillars = [
   { t: 'Speed', d: 'Acceleration, top-end speed and change of direction, coached and timed so you can see the gains.' },
@@ -30,7 +32,7 @@ const steps = [
         </p>
         <div class="btn-row">
           <a href="/packages/" class="btn btn--primary">Buy a package</a>
-          <a href="/schedule/" class="btn btn--ghost">See the schedule</a>
+          <a href="#evaluation" class="btn btn--ghost">$1 speed evaluation</a>
         </div>
       </div>
       <div class="hero__art" aria-hidden="true">
@@ -40,6 +42,8 @@ const steps = [
   </section>
 
   <ProofStrip />
+
+  <EvalOffer />
 
   <section class="section">
     <div class="wrap">
@@ -55,6 +59,9 @@ const steps = [
           </div>
         ))}
       </div>
+      <p class="center sports-line">
+        Training for {sports.map((x, i) => <>{i > 0 && ' · '}<a href={`/sports/${x.slug}/`}>{x.name}</a></>)}
+      </p>
     </div>
   </section>
 
@@ -122,6 +129,7 @@ const steps = [
   .hero__art img { width: min(320px, 70%); height: auto; filter: drop-shadow(0 0 60px rgba(63, 196, 108, 0.18)); }
   .hero .lead { margin-bottom: 28px; }
   .at { color: var(--green-bright); }
+  .sports-line { margin-top: 32px; color: var(--steel-muted); }
   .steps { list-style: none; padding: 0; margin: 40px 0 0; }
   .steps li { border-top: 2px solid var(--green-deep); padding-top: 22px; }
   .steps__n { font: 700 0.9rem/1 var(--display); color: var(--green-bright); letter-spacing: .1em; display: block; margin-bottom: 12px; }

@@ -1,0 +1,123 @@
+---
+import Base from '../../layouts/Base.astro';
+import EvalOffer from '../../components/EvalOffer.astro';
+import PackageCards from '../../components/PackageCards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { sports, type Sport } from '../../sports';
+import { schedule, site } from '../../site.config';
+
+export function getStaticPaths() {
+  return sports.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: Sport };
+const classes = schedule.classes.filter((c) => s.classes.includes(c.name));
+const loc = `${site.location.city}, ${site.location.region}`;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `${s.name} performance training`,
+  provider: { '@type': 'Organization', name: site.name, url: site.url },
+  areaServed: site.location.serviceArea,
+  description: s.intro,
+};
+---
+<Base
+  title={`${s.name} Performance Training in ${loc}`}
+  description={`${s.name} speed, strength and power training in ${loc}. ${s.intro.split('. ')[0]}. Start with a $1 speed evaluation.`}
+  schema={[service, faqSchema]}
+>
+  <section class="section section--glow">
+    <div class="wrap">
+      <span class="eyebrow">{s.name} training · {loc}</span>
+      <h1 class="metal">{s.headline}</h1>
+      <p class="lead">{s.intro}</p>
+      <div class="btn-row">
+        <a href="#evaluation" class="btn btn--primary">Book a $1 speed evaluation</a>
+        <a href="/packages/" class="btn btn--ghost">See packages</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">What we train</span>
+        <h2>Built for {s.athlete}.</h2>
+      </div>
+      <div class="grid focus">
+        {s.focus.map((f) => <div class="card"><h3>{f.t}</h3><p class="muted">{f.d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight proof">
+    <div class="wrap">
+      <div class="grid proof__grid">
+        {s.proof.map((p) => (
+          <div>
+            <span class="eyebrow">{p.label}</span>
+            <ul class="tags">{p.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p class="muted" style="margin-top:20px">Meet the coach on the <a href="/coaches/">Coaches page</a>.</p>
+    </div>
+  </section>
+
+  <EvalOffer sport={s.name} />
+
+  {classes.length > 0 && (
+    <section class="section">
+      <div class="wrap narrow">
+        <span class="eyebrow">Where {s.athlete} train</span>
+        <h2>Sessions for {s.athlete}</h2>
+        <ul class="sess">
+          {classes.map((c) => <li><strong>{c.name}</strong><span>{c.days}</span><span class="t">{c.time}</span></li>)}
+        </ul>
+        <p class="muted">Every session is {schedule.minutes} minutes. <a href="/schedule/">Full schedule</a></p>
+      </div>
+    </section>
+  )}
+
+  <section class="section section--glow">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px"><span class="eyebrow">Packages</span><h2>Train every week.</h2></div>
+      <PackageCards />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2>{s.name} training questions</h2>
+      <div class="faq">
+        {s.faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
+      <p class="muted" style="margin-top:20px">Other sports: {sports.filter((x) => x.slug !== s.slug).map((x, i, a) => <><a href={`/sports/${x.slug}/`}>{x.name}</a>{i < a.length - 1 ? ' · ' : ''}</>)}</p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .focus { grid-template-columns: repeat(2, 1fr); max-width: 980px; margin: 0 auto; }
+  .narrow { max-width: 820px; }
+  .proof { background: var(--ground); border-top: 1px solid var(--line); }
+  .proof__grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+  .tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius-sm); padding: 8px 12px; font-weight: 500; font-size: .95rem; }
+  .sess { list-style: none; padding: 0; margin: 24px 0 16px; border-top: 1px solid var(--line); }
+  .sess li { display: grid; grid-template-columns: 1fr auto auto; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .sess span { color: var(--green-bright); letter-spacing: .14em; font-weight: 600; font-size: .9rem; }
+  .sess .t { font: 700 1.05rem/1 var(--display); letter-spacing: 0; color: var(--steel); }
+  .faq { border-top: 1px solid var(--line); margin-top: 20px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; padding: 18px 0; font-weight: 600; }
+  details p { color: var(--steel-muted); padding-bottom: 18px; margin: 0; }
+  @media (max-width: 700px) { .focus { grid-template-columns: 1fr; } .sess li { grid-template-columns: 1fr auto; } .sess li span:not(.t) { grid-column: 1; } }
+</style>

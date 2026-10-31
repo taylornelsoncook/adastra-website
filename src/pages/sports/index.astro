@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import EvalOffer from '../../components/EvalOffer.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { sports } from '../../sports';
+import { site } from '../../site.config';
+const loc = `${site.location.city}, ${site.location.region}`;
+---
+<Base title={`Sports Performance Training in ${loc}`} description={`Speed, strength and power training for football, lacrosse, soccer, baseball, basketball, swim and track and field athletes in ${loc}.`}>
+  <section class="section section--glow">
+    <div class="wrap center">
+      <span class="eyebrow">Sports</span>
+      <h1 class="metal">Training built for your sport.</h1>
+      <p class="lead">Every athlete gets speed, strength and power work, programmed around the demands and season of their sport.</p>
+    </div>
+    <div class="wrap">
+      <div class="grid grid--3" style="margin-top:48px">
+        {sports.map((s) => (
+          <a href={`/sports/${s.slug}/`} class="card sport">
+            <h2>{s.name}</h2>
+            <p class="muted">{s.headline}</p>
+            <span class="go">{s.name} training →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <EvalOffer />
+  <CtaBand />
+</Base>
+<style>
+  .sport { text-decoration: none; color: var(--steel); transition: border-color .15s, transform .15s; }
+  .sport:hover { border-color: var(--green-deep); transform: translateY(-2px); color: var(--steel); }
+  .sport h2 { font-size: 1.5rem; }
+  .go { color: var(--green-bright); font-weight: 600; }
+</style>

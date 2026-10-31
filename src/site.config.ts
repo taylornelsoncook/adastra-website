@@ -90,6 +90,20 @@ export const packages: Package[] = [
   },
 ];
 
+// $1 speed evaluation: the low-risk first step for new athletes.
+export const evaluation = {
+  price: '$1',
+  name: 'Speed evaluation',
+  // TODO: a Mindbody checkout link for the $1 evaluation. Until then the button opens the lead form.
+  buyUrl: '',
+  includes: [
+    'Timed 10- and 20-yard sprints',
+    'Vertical and broad jump testing',
+    'Movement screen with a coach',
+    'A recommendation for the right group and package',
+  ],
+};
+
 // College athlete training. Its own Mindbody checkout.
 export const college = {
   buyUrl: 'https://get.mndbdy.ly/v1kQ5X9TG7b', // Mindbody
@@ -137,10 +151,14 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'Can I cancel?',
-    a: 'Packages are month to month. Ask a coach about pausing or canceling.', // TODO confirm the cancellation policy
+    a: 'Packages are month to month. To cancel, give us 14 days\u2019 notice before your next billing date. Exceptions are at the owner\u2019s discretion.',
+  },
+  {
+    q: 'What is the $1 speed evaluation?',
+    a: 'A one-time session where a coach times your sprints, tests your jumps and screens how you move. You leave with your numbers and a recommendation for the right group and package. It costs $1.',
   },
   {
     q: 'How do I get started?',
-    a: 'Pick a package and buy it online, then book into your group on the schedule. Questions first? Ask a coach and we will get back to you.',
+    a: 'Book a $1 speed evaluation, or pick a package and buy it online, then book into your group on the schedule. Questions first? Ask a coach and we will get back to you.',
   },
 ];
