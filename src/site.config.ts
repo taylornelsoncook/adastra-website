@@ -4,7 +4,7 @@
 export const site = {
   name: 'Ad Astra Human Performance',
   shortName: 'Ad Astra',
-  url: 'https://www.adastrahp.com',
+  url: 'https://www.adastrahp.org',
   tagline: 'Train like the season depends on it.',
   description:
     'Coached 80-minute speed, strength and performance classes for youth, high school, lacrosse and college-commit athletes at Factum in Englewood, CO. 8 or 12 sessions a month.',
@@ -20,7 +20,7 @@ export const site = {
     serviceArea: 'Englewood, Centennial and the south Denver metro',
     mapsUrl: '',
   },
-  email: 'hello@adastrahp.com', // TODO confirm this inbox exists
+  email: 'hello@adastrahp.org', // TODO confirm this inbox exists
   phone: '', // TODO optional
   instagram: 'https://www.instagram.com/adastra.hp/',
 

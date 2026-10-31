@@ -1,6 +1,6 @@
 # Ad Astra Human Performance website
 
-The public site for www.adastrahp.com. Built with [Astro](https://astro.build) as a static site and hosted on Cloudflare Pages.
+The public site for www.adastrahp.org. Built with [Astro](https://astro.build) as a static site and hosted on Cloudflare Pages.
 
 ## Change something
 
@@ -20,8 +20,8 @@ npm run build    # outputs to dist/
 
 1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → pick this repo.
 2. Framework preset: **Astro**. Build command `npm run build`, output directory `dist`.
-3. After the first deploy: the project → Custom domains → add `www.adastrahp.com` (and `adastrahp.com`). Cloudflare adds the DNS records since the domain is already there.
-4. Redirect the bare domain to www: Rules → Redirect Rules → `adastrahp.com/*` → `https://www.adastrahp.com/${1}`, 301.
+3. After the first deploy: the project → Custom domains → add `www.adastrahp.org` (and `adastrahp.org`). Cloudflare adds the DNS records since the domain is already there.
+4. Redirect the bare domain to www: Rules → Redirect Rules → `adastrahp.org/*` → `https://www.adastrahp.org/${1}`, 301.
 
 ## Purchase paths
 
