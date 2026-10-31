@@ -43,7 +43,7 @@ export const proAthletes = {
 
 // TODO: confirm each person here is OK being named (parent OK for anyone under 18).
 export const developmentAthletes = [
-  'JT Cross', 'Mark Bowman', 'Jordan Nytes', 'Brek Kolojay', 'Hauss Hejny', 'Myles Purchase', 'Blake Purchase',
+  'Dylan Raiola', 'JT Cross', 'Mark Bowman', 'Jordan Nytes', 'Brek Kolojay', 'Hauss Hejny', 'Myles Purchase', 'Blake Purchase',
   'Cole Payton', 'Jackson Coleman', 'Titus Huard', 'Jayden Fox', 'Harry Luong', 'Wyatt Branish', 'Grant Van Wyk',
   'Sean Kilkenney', 'James Riches', 'DJ Bordeaux', 'Josh Morrisey', 'Jack Howell', 'Jae Howell', 'Tess Boade',
   'Meg Boade', 'Jordan Jackson', 'Chase Wilson',
