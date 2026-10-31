@@ -37,7 +37,7 @@ export const proAthletes = {
   ],
   mlb: [
     'Bobby Witt Jr.', 'Trevor Story', 'Trent Grisham', 'Matt Carpenter', 'Noah Syndergaard', 'Derek Holland',
-    'Brandon Workman', 'Kyle Crick', 'TJ Rumfield',
+    'Brandon Workman', 'Kyle Crick', 'TJ Rumfield', 'Hagen Smith', 'AJ Smith-Shawver', 'Bryce Elder',
   ],
 };
 
