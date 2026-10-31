@@ -7,7 +7,7 @@ export const site = {
   url: 'https://www.adastrahp.com',
   tagline: 'Train like the season depends on it.',
   description:
-    'Monthly strength, speed and performance training packages for athletes. Train in our facility or anywhere with coach-built programming.',
+    'Coached 80-minute speed, strength and performance classes for youth, high school, lacrosse and college-commit athletes at Factum. 8 or 12 sessions a month.',
 
   // TODO: real city, address and contact details. Local search depends on these.
   location: {
@@ -20,11 +20,11 @@ export const site = {
   },
   email: 'hello@adastrahp.com', // TODO confirm this inbox exists
   phone: '', // TODO optional
-  instagram: '', // TODO e.g. https://instagram.com/adastrahp
+  instagram: 'https://www.instagram.com/adastra.hp/',
 
   // Where each purchase path goes.
   links: {
-    // In-facility packages are sold through Mindbody. TODO: paste the Mindbody pricing/checkout link.
+    // Factum packages are sold through Mindbody. TODO: paste the Mindbody pricing/checkout link.
     mindbody: 'https://clients.mindbodyonline.com/',
     // Train-anywhere packages are sold through Diamond Protocol (Stripe).
     diamondBook: 'https://app.diamondprotocol.org/book',
@@ -37,68 +37,84 @@ export type Package = {
   id: string;
   name: string;
   where: 'facility' | 'anywhere';
-  price: string; // shown as-is, e.g. "$249/mo"
+  price: string; // shown as-is, e.g. "$300"
+  per: string; // what the price buys, e.g. "8 sessions / month"
+  rate?: string; // e.g. "$28 per hour"
   blurb: string;
   features: string[];
   featured?: boolean;
+  badge?: string;
 };
 
-// TODO: real package names, prices and inclusions.
+// Real packages (from the November 1 schedule post). Sold through Mindbody.
 export const packages: Package[] = [
   {
-    id: 'remote',
-    name: 'Remote Performance',
-    where: 'anywhere',
-    price: '$—/mo',
-    blurb: 'Coach-built programming in the app for athletes who train on their own schedule.',
+    id: 'eight',
+    name: '8 Sessions',
+    where: 'facility',
+    price: '$300',
+    per: '8 sessions / month',
+    rate: '$28 per hour',
+    blurb: 'Two coached sessions a week at Factum.',
     features: [
-      'Individual program built around your sport and season',
-      'Workouts, weights and demo videos in the app',
-      'Program adjusts around your game schedule',
-      'Monthly progress report and coach check-ins',
+      '8 coached 80-minute sessions each month',
+      'Any class on the schedule for your group',
+      'Speed, strength and power programming',
+      'Month to month',
     ],
   },
   {
-    id: 'facility',
-    name: 'Facility Membership',
+    id: 'twelve',
+    name: '12 Sessions',
     where: 'facility',
-    price: '$—/mo',
-    blurb: 'Coached small-group sessions in our facility, every week.',
+    price: '$400',
+    per: '12 sessions / month',
+    rate: '$25 per hour',
+    blurb: 'Three coached sessions a week at Factum. The fastest way to improve.',
     features: [
-      'Coached small-group training sessions each week',
-      'Speed, strength and power testing every block',
-      'Full program in the app for days away from the facility',
-      'Priority booking for camps and clinics',
+      '12 coached 80-minute sessions each month',
+      'Any class on the schedule for your group',
+      'Speed, strength and power programming',
+      'Month to month',
     ],
     featured: true,
-  },
-  {
-    id: 'elite',
-    name: 'Elite 1:1',
-    where: 'facility',
-    price: '$—/mo',
-    blurb: 'Private coaching for athletes chasing the next level.',
-    features: [
-      'Private sessions with your coach',
-      'Fully individual programming and testing',
-      'Recovery and readiness tracking',
-      'Direct line to your coach',
-    ],
+    badge: 'Best value',
   },
 ];
+
+// Weekly class schedule at Factum. Every class is 80 minutes.
+export const schedule = {
+  facility: 'Factum',
+  startsOn: 'November 1',
+  minutes: 80,
+  classes: [
+    { days: 'M/T/W', name: 'College Commits', time: '7:00 AM' },
+    { days: 'M/W/F', name: 'College Commits', time: '4:00 PM' },
+    { days: 'M/W', name: 'High School Performance', time: '5:20 PM' },
+    { days: 'T/W', name: 'Youth Lacrosse', time: '6:40 PM' },
+    { days: 'T/TH', name: 'High School Lacrosse', time: '4:00 PM' },
+    { days: 'T/TH', name: 'Kings 2032', time: '5:20 PM' },
+    { days: 'M/TH', name: 'Kings 2031', time: '6:40 PM' },
+    { days: 'F', name: 'HS Lacrosse', time: '5:20 PM' },
+  ],
+};
 
 export const faqs: { q: string; a: string }[] = [
   {
     q: 'Who is Ad Astra for?',
-    a: 'Athletes who want to get faster, stronger and more durable for their sport, from middle school through college and beyond. Every program starts from where the athlete is today.',
+    a: 'Athletes who want to get faster, stronger and more durable for their sport: youth and high school athletes, lacrosse players and college commits.',
   },
   {
     q: 'What is included in a monthly package?',
-    a: 'Every package includes a program written for your sport and season, delivered in the app with weights and demo videos. Facility packages add coached sessions in person. See the Packages page for the details of each.',
+    a: 'Packages are sessions per month at Factum: 8 sessions for $300 or 12 sessions for $400. Every session is a coached 80-minute class, not 60, so you get more training for your money.',
   },
   {
-    q: 'Do I have to train at the facility?',
-    a: 'No. Remote Performance gives you the same coach-built programming to follow anywhere, with your coach watching your progress in the app.',
+    q: 'Where and when do classes run?',
+    a: 'Classes run at Factum on a weekly schedule: College Commits, High School Performance, Youth and High School Lacrosse, and Kings 2031 and 2032. See the Schedule page for days and times.',
+  },
+  {
+    q: 'Can I train outside the facility?',
+    a: 'Yes. Ask a coach about training away from Factum and we will set you up with coach-built programming in the app.',
   },
   {
     q: 'How does training work during the season?',
@@ -106,10 +122,10 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'Can I cancel?',
-    a: 'Packages are month to month. TODO: confirm the cancellation policy.',
+    a: 'Packages are month to month. Ask a coach about pausing or canceling.', // TODO confirm the cancellation policy
   },
   {
     q: 'How do I get started?',
-    a: 'Pick a package and buy it online, or ask us a question and a coach will get back to you with the best fit and a free evaluation.',
+    a: 'Pick a package and buy it online, then book into your group on the schedule. Questions first? Ask a coach and we will get back to you.',
   },
 ];

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import ScheduleTable from '../components/ScheduleTable.astro';
+import PackageCards from '../components/PackageCards.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { schedule } from '../site.config';
+---
+<Base
+  title={`Class Schedule at ${schedule.facility}`}
+  description={`Weekly Ad Astra class times at ${schedule.facility}: College Commits, High School Performance, Youth and High School Lacrosse, Kings 2031 and 2032. Every class is 80 minutes.`}
+>
+  <section class="section section--glow">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">Starting {schedule.startsOn}</span>
+        <h1><span class="metal">New schedule</span> <span class="at">@ {schedule.facility}</span></h1>
+        <p class="lead">Find your group, pick a package, and book your sessions.</p>
+      </div>
+      <ScheduleTable />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:48px">
+        <span class="eyebrow">Packages</span>
+        <h2>Pick your sessions per month.</h2>
+      </div>
+      <PackageCards />
+    </div>
+  </section>
+
+  <CtaBand title="Not sure which group fits?" text="Tell us about your athlete and a coach will point you to the right class." />
+</Base>
+
+<style>
+  .at { color: var(--green-bright); }
+</style>

@@ -3,7 +3,8 @@ import Base from '../layouts/Base.astro';
 import PackageCards from '../components/PackageCards.astro';
 import FaqList from '../components/FaqList.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { site } from '../site.config';
+import ScheduleTable from '../components/ScheduleTable.astro';
+import { site, schedule } from '../site.config';
 
 const pillars = [
   { t: 'Speed', d: 'Acceleration, top-end speed and change of direction, coached and timed so you can see the gains.' },
@@ -11,9 +12,9 @@ const pillars = [
   { t: 'Durability', d: 'Mobility, recovery and smart training load around your games, so you are fresh and healthy when it counts.' },
 ];
 const steps = [
-  { n: '01', t: 'Pick a package', d: 'Choose a monthly package in our facility or train-anywhere programming.' },
-  { n: '02', t: 'Get tested', d: 'We measure where you are today, then build your program around your sport and season.' },
-  { n: '03', t: 'Train and track', d: 'Follow your program in the app, with coaches watching your progress and adjusting as you go.' },
+  { n: '01', t: 'Find your group', d: 'College Commits, High School Performance, Youth and HS Lacrosse, or your Kings team.' },
+  { n: '02', t: 'Pick a package', d: '8 sessions a month for $300, or 12 sessions for $400. Month to month.' },
+  { n: '03', t: 'Train', d: 'Show up to your class at Factum. Every session is 80 coached minutes, not 60.' },
 ];
 ---
 <Base>
@@ -23,12 +24,12 @@ const steps = [
         <span class="eyebrow">Athlete performance training</span>
         <h1 class="metal">Built for athletes who want more.</h1>
         <p class="lead">
-          Monthly training packages that make you faster, stronger and harder to stop. Train with us in the facility, or follow
-          coach-built programming anywhere.
+          Coached 80-minute speed, strength and performance classes at {schedule.facility}, for youth, high school, lacrosse and
+          college-commit athletes. 8 or 12 sessions a month.
         </p>
         <div class="btn-row">
           <a href="/packages/" class="btn btn--primary">Buy a package</a>
-          <a href={site.links.leadForm} class="btn btn--ghost" rel="noopener">Ask a coach</a>
+          <a href="/schedule/" class="btn btn--ghost">See the schedule</a>
         </div>
       </div>
       <div class="hero__art" aria-hidden="true">
@@ -74,16 +75,28 @@ const steps = [
     </div>
   </section>
 
-  <section class="section section--glow" id="packages">
+  <section class="section section--glow" id="schedule">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">Starting {schedule.startsOn}</span>
+        <h2>New schedule <span class="at">@ {schedule.facility}</span></h2>
+      </div>
+      <ScheduleTable />
+    </div>
+  </section>
+
+  <section class="section" id="packages">
     <div class="wrap">
       <div class="center" style="margin-bottom:48px">
         <span class="eyebrow">Monthly packages</span>
         <h2>Choose how you train.</h2>
-        <p class="lead">Month to month. Every package includes a program built for your sport and season.</p>
+        <p class="lead">Month to month. Use your sessions in any class on your group's schedule.</p>
       </div>
       <PackageCards />
     </div>
   </section>
+
+  <hr class="divider" />
 
   <section class="section">
     <div class="wrap">
@@ -105,6 +118,7 @@ const steps = [
   .hero__art { display: flex; justify-content: center; }
   .hero__art img { width: min(320px, 70%); height: auto; filter: drop-shadow(0 0 60px rgba(63, 196, 108, 0.18)); }
   .hero .lead { margin-bottom: 28px; }
+  .at { color: var(--green-bright); }
   .steps { list-style: none; padding: 0; margin: 40px 0 0; }
   .steps li { border-top: 2px solid var(--green-deep); padding-top: 22px; }
   .steps__n { font: 700 0.9rem/1 var(--display); color: var(--green-bright); letter-spacing: .1em; display: block; margin-bottom: 12px; }

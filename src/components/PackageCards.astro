@@ -1,14 +1,15 @@
 ---
-import { packages, site } from '../site.config';
+import { packages, schedule, site } from '../site.config';
 const buyLink = (where: 'facility' | 'anywhere') => (where === 'facility' ? site.links.mindbody : site.links.diamondBook);
 ---
 <div class="grid grid--3 pk">
   {packages.map((p) => (
     <article class:list={['card', 'pk__card', { 'pk__card--featured': p.featured }]} id={p.id}>
-      {p.featured && <span class="pk__badge">Most popular</span>}
-      <span class="pk__where">{p.where === 'facility' ? 'In our facility' : 'Train anywhere'}</span>
+      {p.badge && <span class="pk__badge">{p.badge}</span>}
+      <span class="pk__where">{p.where === 'facility' ? `At ${schedule.facility}` : 'Train anywhere'}</span>
       <h3>{p.name}</h3>
-      <p class="pk__price">{p.price}</p>
+      <p class="pk__price">{p.price}<span>/mo</span></p>
+      <p class="pk__per">{p.per}{p.rate && <> · {p.rate}</>}</p>
       <p class="muted">{p.blurb}</p>
       <ul class="check-list">
         {p.features.map((f) => <li>{f}</li>)}
@@ -19,14 +20,14 @@ const buyLink = (where: 'facility' | 'anywhere') => (where === 'facility' ? site
         rel="noopener"
         data-package={p.id}
       >
-        Buy {p.name}
+        Buy {p.name}: {p.price}
       </a>
     </article>
   ))}
 </div>
 
 <style>
-  .pk { align-items: stretch; }
+  .pk { align-items: stretch; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 820px; margin: 0 auto; }
   .pk__card { position: relative; display: flex; flex-direction: column; }
   .pk__card--featured { border-color: var(--green-deep); box-shadow: 0 0 0 1px var(--green-deep), 0 20px 60px -30px rgba(63, 196, 108, 0.45); }
   .pk__badge {
@@ -35,7 +36,9 @@ const buyLink = (where: 'facility' | 'anywhere') => (where === 'facility' ? site
     padding: 4px 10px; border-radius: 999px; letter-spacing: .04em;
   }
   .pk__where { font-size: .75rem; letter-spacing: .24em; text-transform: uppercase; color: var(--green-bright); margin-bottom: 10px; }
-  .pk__price { font: 700 2rem/1 var(--display); margin: 4px 0 14px; }
+  .pk__price { font: 700 2.6rem/1 var(--display); margin: 4px 0 8px; }
+  .pk__price span { font-size: 1rem; color: var(--steel-muted); font-weight: 600; margin-left: 4px; }
+  .pk__per { font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--steel-muted); margin-bottom: 14px; }
   .pk__card .check-list { flex: 1; }
   .pk__buy { width: 100%; }
 </style>
