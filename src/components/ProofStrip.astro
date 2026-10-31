@@ -1,0 +1,40 @@
+---
+import { combineResults, proAthletes } from '../coaches';
+interface Props { showNames?: boolean }
+const { showNames = true } = Astro.props;
+const featured = [...proAthletes.nfl.slice(0, 5), ...proAthletes.mlb.slice(0, 2)];
+---
+<section class="proof">
+  <div class="wrap">
+    <p class="proof__lead">
+      <span class="eyebrow">Proven results</span>
+      Our head coach has prepared <strong>{combineResults.athletes}</strong> athletes for the NFL Combine and Pro Days, with average gains of:
+    </p>
+    <div class="proof__stats">
+      {combineResults.stats.map((s) => (
+        <div class="proof__stat"><span class="proof__val">{s.value}</span><span class="proof__lbl">{s.label}</span></div>
+      ))}
+    </div>
+    {showNames && (
+      <p class="proof__names">
+        Trained athletes including {featured.join(' · ')} <a href="/coaches/#athletes">and more</a>
+      </p>
+    )}
+  </div>
+</section>
+
+<style>
+  .proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--ground); padding: 56px 0; }
+  .proof__lead { text-align: center; color: var(--steel-muted); max-width: 680px; margin: 0 auto 32px; }
+  .proof__lead strong { color: var(--steel); }
+  .proof__stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .proof__stat { text-align: center; padding: 18px 8px; border-left: 1px solid var(--line); }
+  .proof__stat:first-child { border-left: 0; }
+  .proof__val { display: block; font: 700 clamp(2rem, 4vw, 2.8rem)/1 var(--display); color: var(--green-bright); margin-bottom: 8px; }
+  .proof__lbl { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--steel-muted); }
+  .proof__names { text-align: center; margin: 32px auto 0; max-width: 900px; color: var(--steel); font-weight: 500; }
+  @media (max-width: 640px) {
+    .proof__stats { grid-template-columns: 1fr 1fr; }
+    .proof__stat { border-left: 0; }
+  }
+</style>
