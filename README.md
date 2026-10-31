@@ -16,12 +16,13 @@ npm run dev      # http://localhost:4321
 npm run build    # outputs to dist/
 ```
 
-## Deploy (Cloudflare Pages, one time)
+## Deploy (Cloudflare Workers, one time)
 
-1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → pick this repo.
-2. Framework preset: **Astro**. Build command `npm run build`, output directory `dist`.
-3. After the first deploy: the project → Custom domains → add `www.adastrahp.org` (and `adastrahp.org`). Cloudflare adds the DNS records since the domain is already there.
-4. Redirect the bare domain to www: Rules → Redirect Rules → `adastrahp.org/*` → `https://www.adastrahp.org/${1}`, 301.
+1. Cloudflare dashboard → Workers & Pages → Create → Import a repository → pick this repo.
+2. Build command `npm run build`, deploy command `npx wrangler deploy` (it reads `wrangler.jsonc`, which serves `dist/`).
+3. After the first deploy: the project → Settings → Domains & Routes → Add → Custom domain → `www.adastrahp.org`, then `adastrahp.org`.
+
+Every push to `main` redeploys automatically.
 
 ## Purchase paths
 
