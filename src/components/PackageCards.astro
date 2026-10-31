@@ -1,0 +1,41 @@
+---
+import { packages, site } from '../site.config';
+const buyLink = (where: 'facility' | 'anywhere') => (where === 'facility' ? site.links.mindbody : site.links.diamondBook);
+---
+<div class="grid grid--3 pk">
+  {packages.map((p) => (
+    <article class:list={['card', 'pk__card', { 'pk__card--featured': p.featured }]} id={p.id}>
+      {p.featured && <span class="pk__badge">Most popular</span>}
+      <span class="pk__where">{p.where === 'facility' ? 'In our facility' : 'Train anywhere'}</span>
+      <h3>{p.name}</h3>
+      <p class="pk__price">{p.price}</p>
+      <p class="muted">{p.blurb}</p>
+      <ul class="check-list">
+        {p.features.map((f) => <li>{f}</li>)}
+      </ul>
+      <a
+        class:list={['btn', p.featured ? 'btn--primary' : 'btn--ghost', 'pk__buy']}
+        href={buyLink(p.where)}
+        rel="noopener"
+        data-package={p.id}
+      >
+        Buy {p.name}
+      </a>
+    </article>
+  ))}
+</div>
+
+<style>
+  .pk { align-items: stretch; }
+  .pk__card { position: relative; display: flex; flex-direction: column; }
+  .pk__card--featured { border-color: var(--green-deep); box-shadow: 0 0 0 1px var(--green-deep), 0 20px 60px -30px rgba(63, 196, 108, 0.45); }
+  .pk__badge {
+    position: absolute; top: -12px; right: 20px;
+    background: var(--green); color: #04140a; font-size: .75rem; font-weight: 600;
+    padding: 4px 10px; border-radius: 999px; letter-spacing: .04em;
+  }
+  .pk__where { font-size: .75rem; letter-spacing: .24em; text-transform: uppercase; color: var(--green-bright); margin-bottom: 10px; }
+  .pk__price { font: 700 2rem/1 var(--display); margin: 4px 0 14px; }
+  .pk__card .check-list { flex: 1; }
+  .pk__buy { width: 100%; }
+</style>

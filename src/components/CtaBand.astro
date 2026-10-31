@@ -1,0 +1,24 @@
+---
+import { site } from '../site.config';
+interface Props { title?: string; text?: string }
+const {
+  title = 'Your next season starts now.',
+  text = 'Pick a monthly package and start training this week, or ask a coach which one fits.',
+} = Astro.props;
+---
+<section class="section section--glow cta">
+  <div class="wrap center">
+    <img src="/brand/mark.webp" alt="" width="64" height="88" class="cta__mark" loading="lazy" />
+    <h2 class="metal">{title}</h2>
+    <p class="lead">{text}</p>
+    <div class="btn-row">
+      <a href="/packages/" class="btn btn--primary">See packages</a>
+      <a href={site.links.leadForm} class="btn btn--ghost" rel="noopener">Ask a coach</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta { border-top: 1px solid var(--line); }
+  .cta__mark { height: 88px; width: auto; margin: 0 auto 20px; }
+</style>

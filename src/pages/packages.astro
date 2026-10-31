@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import PackageCards from '../components/PackageCards.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { packages, site } from '../site.config';
+
+const offers = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Ad Astra monthly training packages',
+  itemListElement: packages.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: { '@type': 'Service', name: p.name, description: p.blurb, provider: { '@type': 'Organization', name: site.name } },
+  })),
+};
+---
+<Base title="Monthly Training Packages" description="Monthly athlete training packages: in-facility small group, 1:1 coaching and train-anywhere programming." schema={[offers]}>
+  <section class="section section--glow">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:56px">
+        <span class="eyebrow">Monthly packages</span>
+        <h1 class="metal">Choose how you train.</h1>
+        <p class="lead">
+          Train with our coaches in the facility, or take your program anywhere. Every package is month to month and starts with
+          testing, so your program fits you.
+        </p>
+      </div>
+      <PackageCards />
+      <p class="center muted note">
+        Facility packages check out through Mindbody. Train-anywhere packages check out through our coaching app. Not sure which
+        fits? <a href={site.links.leadForm} rel="noopener">Ask a coach</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:32px"><h2>Before you buy.</h2></div>
+      <FaqList />
+    </div>
+  </section>
+
+  <CtaBand title="Not sure where to start?" text="Tell us about your athlete and a coach will recommend the right package." />
+</Base>
+
+<style>
+  .note { margin-top: 32px; font-size: .95rem; }
+</style>

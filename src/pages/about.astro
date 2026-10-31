@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const values = [
+  { t: 'Measured, not guessed', d: 'We test speed, strength and power, then program from the numbers and show you the progress.' },
+  { t: 'Built around your season', d: 'Training load follows your game schedule, so you peak when it matters and recover when you need to.' },
+  { t: 'Coached every rep', d: 'Real coaches watching your training, in the facility and in the app, adjusting as you improve.' },
+];
+---
+<Base title="About" description="Ad Astra Human Performance: athlete training built on testing, coaching and programs that follow your season.">
+  <section class="section section--glow">
+    <div class="wrap about">
+      <div>
+        <span class="eyebrow">About Ad Astra</span>
+        <h1 class="metal">To the stars, through hard work.</h1>
+        <p class="lead">
+          Ad astra per aspera. Ad Astra Human Performance exists to help athletes reach the level they are chasing, through
+          training that is measured, coached and built around their sport.
+        </p>
+        <!-- TODO: founder story, coaching credentials, certifications, athletes and teams worked with. -->
+        <p class="muted">
+          Founder story and coaching credentials coming soon.
+        </p>
+      </div>
+      <img src="/brand/lockup-stacked.webp" alt="Ad Astra Human Performance" width="900" height="923" loading="lazy" class="about__logo" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center"><span class="eyebrow">How we coach</span><h2>What you can count on.</h2></div>
+      <div class="grid grid--3" style="margin-top:40px">
+        {values.map((v) => (
+          <div class="card"><h3>{v.t}</h3><p class="muted">{v.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+  .about__logo { width: 100%; max-width: 360px; height: auto; margin: 0 auto; }
+  @media (max-width: 820px) { .about { grid-template-columns: 1fr; } .about__logo { max-width: 220px; } }
+</style>

@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqs } from '../site.config';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base title="FAQ" description="Answers to common questions about Ad Astra training packages, scheduling, in-season training and getting started." schema={[faqSchema]}>
+  <section class="section section--glow">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">FAQ</span>
+        <h1 class="metal">Questions, answered.</h1>
+        <p class="lead">Anything else? Ask a coach and we will get back to you.</p>
+      </div>
+      <FaqList />
+    </div>
+  </section>
+  <CtaBand />
+</Base>

@@ -1,0 +1,39 @@
+---
+import { site } from '../site.config';
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="wrap ftr__in">
+    <div>
+      <img src="/brand/mark.webp" alt="" width="44" height="61" class="ftr__mark" />
+      <p class="muted">{site.name}<br />{site.location.serviceArea}</p>
+    </div>
+    <ul class="ftr__links">
+      <li><a href="/packages/">Packages</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/faq/">FAQ</a></li>
+      <li><a href="/start/">Contact</a></li>
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+      {site.instagram && <li><a href={site.instagram} rel="noopener">Instagram</a></li>}
+    </ul>
+  </div>
+  <div class="wrap ftr__base">
+    <span>© {year} {site.name}</span>
+    <span class="ftr__tag">Ad astra per aspera</span>
+  </div>
+</footer>
+
+<style>
+  .ftr { border-top: 1px solid var(--line); background: var(--ground); padding: 56px 0 28px; }
+  .ftr__in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+  .ftr__mark { height: 61px; width: auto; margin-bottom: 14px; }
+  .ftr__links { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .ftr__links a { color: var(--steel-muted); text-decoration: none; }
+  .ftr__links a:hover { color: var(--steel); }
+  .ftr__base {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--steel-dim); font-size: 0.85rem;
+  }
+  .ftr__tag { letter-spacing: 0.3em; text-transform: uppercase; color: var(--green-bright); opacity: .8; }
+</style>

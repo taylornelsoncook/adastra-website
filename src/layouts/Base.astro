@@ -1,0 +1,68 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../site.config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  schema?: object[];
+}
+const { title, description = site.description, schema = [] } = Astro.props;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Athlete Performance Training`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const loc = site.location;
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsActivityLocation',
+  name: site.name,
+  url: site.url,
+  logo: `${site.url}/brand/icon-512.png`,
+  image: `${site.url}/brand/og.jpg`,
+  description: site.description,
+  email: site.email,
+  ...(site.phone ? { telephone: site.phone } : {}),
+  address: {
+    '@type': 'PostalAddress',
+    ...(loc.street ? { streetAddress: loc.street } : {}),
+    addressLocality: loc.city,
+    addressRegion: loc.region,
+    ...(loc.postalCode ? { postalCode: loc.postalCode } : {}),
+    addressCountry: loc.country,
+  },
+  areaServed: loc.serviceArea,
+  ...(site.instagram ? { sameAs: [site.instagram] } : {}),
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#070908" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site.url}/brand/og.jpg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(business)} />
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
+  </body>
+</html>
