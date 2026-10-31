@@ -32,7 +32,7 @@ const business = {
     addressCountry: loc.country,
   },
   areaServed: loc.serviceArea,
-  hasMap: loc.mapsUrl,
+  ...(loc.mapsUrl ? { hasMap: loc.mapsUrl } : {}),
   ...(site.instagram ? { sameAs: [site.instagram] } : {}),
 };
 ---

@@ -9,16 +9,16 @@ export const site = {
   description:
     'Coached 80-minute speed, strength and performance classes for youth, high school, lacrosse and college-commit athletes at Factum in Englewood, CO. 8 or 12 sessions a month.',
 
-  // Ad Astra trains out of Factum. Local search depends on these.
+  // City-level only for now. The owner will add a street address once Ad Astra has its own facility.
   location: {
     venue: 'Factum',
     city: 'Englewood',
     region: 'CO',
-    street: '7475 S Joliet St Suite 700',
-    postalCode: '80112',
+    street: '',
+    postalCode: '',
     country: 'US',
     serviceArea: 'Englewood, Centennial and the south Denver metro',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=7475+S+Joliet+St+Suite+700+Englewood+CO+80112',
+    mapsUrl: '',
   },
   email: 'hello@adastrahp.com', // TODO confirm this inbox exists
   phone: '', // TODO optional

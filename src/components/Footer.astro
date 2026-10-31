@@ -8,9 +8,7 @@ const year = new Date().getFullYear();
       <img src="/brand/mark.webp" alt="" width="44" height="61" class="ftr__mark" />
       <p class="muted">
         {site.name}<br />
-        <a href={site.location.mapsUrl} rel="noopener" class="ftr__addr">
-          At {site.location.venue}, {site.location.street}<br />{site.location.city}, {site.location.region} {site.location.postalCode}
-        </a>
+        {site.location.serviceArea}
       </p>
     </div>
     <ul class="ftr__links">

@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import ScheduleTable from '../components/ScheduleTable.astro';
 import PackageCards from '../components/PackageCards.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { schedule, site } from '../site.config';
+import { schedule } from '../site.config';
 ---
 <Base
   title={`Class Schedule at ${schedule.facility}`}
@@ -15,7 +15,6 @@ import { schedule, site } from '../site.config';
         <span class="eyebrow">Starting {schedule.startsOn}</span>
         <h1><span class="metal">New schedule</span> <span class="at">@ {schedule.facility}</span></h1>
         <p class="lead">Find your group, pick a package, and book your sessions.</p>
-        <p class="muted"><a href={site.location.mapsUrl} rel="noopener">{site.location.street}, {site.location.city}, {site.location.region} {site.location.postalCode}</a></p>
       </div>
       <ScheduleTable />
     </div>
