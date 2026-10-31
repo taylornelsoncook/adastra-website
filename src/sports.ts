@@ -159,4 +159,24 @@ export const sports: Sport[] = [
       { q: 'Can field event athletes train with you?', a: 'Yes. Jumpers and throwers get power and strength work built for their event.' },
     ],
   },
+  {
+    slug: 'golf',
+    name: 'Golf',
+    athlete: 'golfers',
+    headline: 'More club speed. Fewer aches.',
+    intro:
+      'Golf performance training from a Titleist Performance Institute (TPI) certified coach: rotational power, mobility and strength for more club head speed and a body that holds up through the season.',
+    focus: [
+      { t: 'Club head speed', d: 'Rotational power and lower-body force that turn into distance off the tee.' },
+      { t: 'Mobility for the swing', d: 'Hip, thoracic and shoulder mobility so you can reach the positions your swing needs.' },
+      { t: 'Strength and stability', d: 'A strong base and trunk to stay balanced and repeatable through impact.' },
+      { t: 'Back and joint health', d: 'Training that protects the lower back, hips and shoulders from the stress of repetitive swings.' },
+    ],
+    proof: [{ label: 'Certification', items: ['Titleist Performance Institute (TPI)', 'Certified Strength and Conditioning Specialist (CSCS)'] }],
+    classes: ['High School Performance', 'College Commits'],
+    faqs: [
+      { q: 'Does strength training help golfers?', a: 'Yes. Speed comes from the ground up, so stronger, more powerful golfers swing faster. Training also lowers the wear on the back and hips.' },
+      { q: 'Do I need to be a competitive golfer?', a: 'No. Junior, high school and college golfers are all welcome, and every program starts from a movement screen.' },
+    ],
+  },
 ];

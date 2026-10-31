@@ -104,6 +104,13 @@ export const evaluation = {
   ],
 };
 
+// Team training: discounted pricing for groups of 15 or more athletes.
+export const teamTraining = {
+  minAthletes: 15,
+  price: '$180 per athlete / month for 8 sessions', // 40% off the $300 individual rate
+  buyUrl: '', // optional Mindbody link for team packages; otherwise buttons open the lead form
+};
+
 // College athlete training. Its own Mindbody checkout.
 export const college = {
   buyUrl: 'https://get.mndbdy.ly/v1kQ5X9TG7b', // Mindbody
