@@ -43,6 +43,7 @@ export type Package = {
   per: string; // what the price buys, e.g. "8 sessions / month"
   rate?: string; // e.g. "$28 per hour"
   buyUrl?: string; // checkout link; without one the button asks a coach instead
+  buyNote?: string; // small line under the button, e.g. which option to pick at checkout
   blurb: string;
   features: string[];
   featured?: boolean;
@@ -74,7 +75,9 @@ export const packages: Package[] = [
     price: '$400',
     per: '12 sessions / month',
     rate: '$25 per hour',
-    buyUrl: '', // TODO Mindbody link for the $400 package
+    // Shares the $300 Mindbody link until the $400 package has its own; buyers switch packages at checkout.
+    buyUrl: 'https://get.mndbdy.ly/XSJ7ROp9u7b',
+    buyNote: 'At checkout, switch the package to 12 sessions / $400.',
     blurb: 'Three coached sessions a week at Factum. The fastest way to improve.',
     features: [
       '12 coached 80-minute sessions each month',

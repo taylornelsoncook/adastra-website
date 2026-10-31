@@ -23,6 +23,7 @@ const buyLink = (p: (typeof packages)[number]) => p.buyUrl || site.links.leadFor
       >
         {p.buyUrl ? `Buy ${p.name}: ${p.price}` : `Ask to join: ${p.price}`}
       </a>
+      {p.buyNote && <p class="pk__note">{p.buyNote}</p>}
     </article>
   ))}
 </div>
@@ -42,4 +43,5 @@ const buyLink = (p: (typeof packages)[number]) => p.buyUrl || site.links.leadFor
   .pk__per { font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--steel-muted); margin-bottom: 14px; }
   .pk__card .check-list { flex: 1; }
   .pk__buy { width: 100%; }
+  .pk__note { margin: 10px 0 0; font-size: .85rem; color: var(--steel-muted); text-align: center; }
 </style>
