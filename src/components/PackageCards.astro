@@ -1,6 +1,7 @@
 ---
 import { packages, schedule, site } from '../site.config';
-const buyLink = (where: 'facility' | 'anywhere') => (where === 'facility' ? site.links.mindbody : site.links.diamondBook);
+// A package with no checkout link yet sends buyers to a coach instead of a dead end.
+const buyLink = (p: (typeof packages)[number]) => p.buyUrl || site.links.leadForm;
 ---
 <div class="grid grid--3 pk">
   {packages.map((p) => (
@@ -16,11 +17,11 @@ const buyLink = (where: 'facility' | 'anywhere') => (where === 'facility' ? site
       </ul>
       <a
         class:list={['btn', p.featured ? 'btn--primary' : 'btn--ghost', 'pk__buy']}
-        href={buyLink(p.where)}
+        href={buyLink(p)}
         rel="noopener"
         data-package={p.id}
       >
-        Buy {p.name}: {p.price}
+        {p.buyUrl ? `Buy ${p.name}: ${p.price}` : `Ask to join: ${p.price}`}
       </a>
     </article>
   ))}
