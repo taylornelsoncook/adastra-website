@@ -16,6 +16,9 @@ import { site } from '../site.config';
         <a href="/packages/" class="btn btn--ghost">See packages</a>
       </div>
       <p class="muted contact">
+        Train with us at {site.location.venue}:
+        <a href={site.location.mapsUrl} rel="noopener">{site.location.street}, {site.location.city}, {site.location.region} {site.location.postalCode}</a>.
+        <br />
         Or email <a href={`mailto:${site.email}`}>{site.email}</a>{site.phone && <> or call <a href={`tel:${site.phone}`}>{site.phone}</a></>}.
       </p>
     </div>

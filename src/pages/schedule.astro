@@ -3,11 +3,11 @@ import Base from '../layouts/Base.astro';
 import ScheduleTable from '../components/ScheduleTable.astro';
 import PackageCards from '../components/PackageCards.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { schedule } from '../site.config';
+import { schedule, site } from '../site.config';
 ---
 <Base
   title={`Class Schedule at ${schedule.facility}`}
-  description={`Weekly Ad Astra class times at ${schedule.facility}: College Commits, High School Performance, Youth and High School Lacrosse, Kings 2031 and 2032. Every class is 80 minutes.`}
+  description={`Weekly Ad Astra class times at ${schedule.facility} in Englewood, CO: College Commits, High School Performance, Youth and High School Lacrosse, Kings 2031 and 2032. Every class is 80 minutes.`}
 >
   <section class="section section--glow">
     <div class="wrap">
@@ -15,6 +15,7 @@ import { schedule } from '../site.config';
         <span class="eyebrow">Starting {schedule.startsOn}</span>
         <h1><span class="metal">New schedule</span> <span class="at">@ {schedule.facility}</span></h1>
         <p class="lead">Find your group, pick a package, and book your sessions.</p>
+        <p class="muted"><a href={site.location.mapsUrl} rel="noopener">{site.location.street}, {site.location.city}, {site.location.region} {site.location.postalCode}</a></p>
       </div>
       <ScheduleTable />
     </div>

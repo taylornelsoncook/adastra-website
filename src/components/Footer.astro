@@ -6,7 +6,12 @@ const year = new Date().getFullYear();
   <div class="wrap ftr__in">
     <div>
       <img src="/brand/mark.webp" alt="" width="44" height="61" class="ftr__mark" />
-      <p class="muted">{site.name}<br />{site.location.serviceArea}</p>
+      <p class="muted">
+        {site.name}<br />
+        <a href={site.location.mapsUrl} rel="noopener" class="ftr__addr">
+          At {site.location.venue}, {site.location.street}<br />{site.location.city}, {site.location.region} {site.location.postalCode}
+        </a>
+      </p>
     </div>
     <ul class="ftr__links">
       <li><a href="/schedule/">Schedule</a></li>
@@ -28,6 +33,8 @@ const year = new Date().getFullYear();
   .ftr { border-top: 1px solid var(--line); background: var(--ground); padding: 56px 0 28px; }
   .ftr__in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
   .ftr__mark { height: 61px; width: auto; margin-bottom: 14px; }
+  .ftr__addr { color: var(--steel-muted); text-decoration: none; }
+  .ftr__addr:hover { color: var(--steel); }
   .ftr__links { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   .ftr__links a { color: var(--steel-muted); text-decoration: none; }
   .ftr__links a:hover { color: var(--steel); }

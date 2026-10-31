@@ -10,7 +10,7 @@ interface Props {
   schema?: object[];
 }
 const { title, description = site.description, schema = [] } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Athlete Performance Training`;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Athlete Training in Englewood, CO`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const loc = site.location;
 const business = {
@@ -32,6 +32,7 @@ const business = {
     addressCountry: loc.country,
   },
   areaServed: loc.serviceArea,
+  hasMap: loc.mapsUrl,
   ...(site.instagram ? { sameAs: [site.instagram] } : {}),
 };
 ---

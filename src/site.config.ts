@@ -7,16 +7,18 @@ export const site = {
   url: 'https://www.adastrahp.com',
   tagline: 'Train like the season depends on it.',
   description:
-    'Coached 80-minute speed, strength and performance classes for youth, high school, lacrosse and college-commit athletes at Factum. 8 or 12 sessions a month.',
+    'Coached 80-minute speed, strength and performance classes for youth, high school, lacrosse and college-commit athletes at Factum in Englewood, CO. 8 or 12 sessions a month.',
 
-  // TODO: real city, address and contact details. Local search depends on these.
+  // Ad Astra trains out of Factum. Local search depends on these.
   location: {
-    city: 'Your City',
-    region: 'ST',
-    street: '',
-    postalCode: '',
+    venue: 'Factum',
+    city: 'Englewood',
+    region: 'CO',
+    street: '7475 S Joliet St Suite 700',
+    postalCode: '80112',
     country: 'US',
-    serviceArea: 'Your City and surrounding areas',
+    serviceArea: 'Englewood, Centennial and the south Denver metro',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=7475+S+Joliet+St+Suite+700+Englewood+CO+80112',
   },
   email: 'hello@adastrahp.com', // TODO confirm this inbox exists
   phone: '', // TODO optional
