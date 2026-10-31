@@ -87,6 +87,13 @@ export const packages: Package[] = [
   },
 ];
 
+// College athlete training. Its own Mindbody checkout.
+export const college = {
+  buyUrl: 'https://get.mndbdy.ly/v1kQ5X9TG7b', // Mindbody
+  price: '', // TODO e.g. '$350/mo'. Shown on the page once filled in.
+  per: '', // TODO e.g. '12 sessions / month'
+};
+
 // Weekly class schedule at Factum. Every class is 80 minutes.
 export const schedule = {
   facility: 'Factum',
