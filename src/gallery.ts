@@ -4,9 +4,7 @@ export type Photo = { src: string; small: string; alt: string; caption?: string;
 
 // The carousel order is shuffled once per day (Denver time) in the browser, so the first photo changes daily.
 export const gallery: Photo[] = [
-  // HELD until a parent OKs minors on the site (files in project files photos-held/):
   // { src: '/photos/youth-speed-class.webp', small: '/photos/youth-speed-class-800.webp', alt: 'Coach demonstrating a high-knee drill to a youth speed class', w: 1065, h: 1600 },
-  // HELD until a parent OKs minors on the site (files in project files photos-held/):
   // { src: '/photos/gymnastics-team.webp', small: '/photos/gymnastics-team-800.webp', alt: 'Coach with a gymnastics team at a national team training center', w: 1600, h: 1200 },
   { src: '/photos/leg-swing-warmup.webp', small: '/photos/leg-swing-warmup-800.webp', alt: 'Coach watching an athlete’s leg swing during a turf warm-up', w: 1066, h: 1600 },
   { src: '/photos/posture-cue.webp', small: '/photos/posture-cue-800.webp', alt: 'Coach setting a college football player’s posture before a speed drill', w: 1600, h: 931 },
@@ -27,12 +25,28 @@ export const gallery: Photo[] = [
   { src: '/photos/qb-coaching.webp', small: '/photos/qb-coaching-800.webp', alt: 'Coach talking through a drill with a quarterback on the field', w: 1600, h: 1037 },
   { src: '/photos/coaches-talk.webp', small: '/photos/coaches-talk-800.webp', alt: 'Coach comparing notes with another coach during a timed session', w: 1160, h: 773 },
   { src: '/photos/pro-group.webp', small: '/photos/pro-group-800.webp', alt: 'Coach leading a group of professional athletes through a movement demo', w: 1600, h: 1016 },
-  // HELD (minor, needs parent OK): { src: '/photos/sprint-talk.webp', small: '/photos/sprint-talk-800.webp', alt: 'Coach explaining a sprint cue to a young athlete on an indoor track', w: 1600, h: 1067 },
+  { src: '/photos/sprint-talk.webp', small: '/photos/sprint-talk-800.webp', alt: 'Coach explaining a sprint cue to a young athlete on an indoor track', w: 1600, h: 1067 },
   { src: '/photos/qb-throw.webp', small: '/photos/qb-throw-800.webp', alt: 'Quarterback throwing as the coach watches during an outdoor session', w: 1068, h: 1600 },
   { src: '/photos/carry-walk.webp', small: '/photos/carry-walk-800.webp', alt: 'Coach walking beside an athlete during a loaded carry', w: 1600, h: 1067 },
-  // HELD (minor, needs parent OK): { src: '/photos/hip-machine.webp', small: '/photos/hip-machine-800.webp', alt: 'Coach spotting an athlete on a hip extension machine', w: 1066, h: 1600 },
+  { src: '/photos/hip-machine.webp', small: '/photos/hip-machine-800.webp', alt: 'Coach spotting an athlete on a hip extension machine', w: 1066, h: 1600 },
   { src: '/photos/barefoot-demo.webp', small: '/photos/barefoot-demo-800.webp', alt: 'Coach demonstrating foot position to a group of athletes', w: 1250, h: 833 },
   { src: '/photos/soccer-selfie.webp', small: '/photos/soccer-selfie-800.webp', alt: 'Two college soccer players after a training session', w: 1200, h: 1600 },
-  // HELD (minor, needs parent OK): { src: '/photos/team-session.webp', small: '/photos/team-session-800.webp', alt: 'Coach leading a high school football team training session', w: 1066, h: 1600 },
+  { src: '/photos/team-session.webp', small: '/photos/team-session-800.webp', alt: 'Coach leading a high school football team training session', w: 1066, h: 1600 },
   { src: '/photos/cu-soccer.webp', small: '/photos/cu-soccer-800.webp', alt: 'Coach with a University of Colorado soccer player after a game', w: 1200, h: 1600 },
+  { src: '/photos/youth-field.webp', small: '/photos/youth-field-800.webp', alt: 'Coach walking a young athlete through a drill on an outdoor field', w: 1066, h: 1600 },
+  { src: '/photos/mobility-rack.webp', small: '/photos/mobility-rack-800.webp', alt: 'Coach and a client demonstrating a stretch on a mobility rack', w: 750, h: 918 },
+  { src: '/photos/adult-group.webp', small: '/photos/adult-group-800.webp', alt: 'Coach with an adult group training class', w: 1600, h: 1200 },
+  { src: '/photos/mural-group.webp', small: '/photos/mural-group-800.webp', alt: 'Coach with an adult training group in front of a mural', w: 1200, h: 1600 },
+  { src: '/photos/gymnastics-meet.webp', small: '/photos/gymnastics-meet-800.webp', alt: 'Coach with a gymnast and her coach at a competition', w: 1200, h: 1600 },
+  { src: '/photos/mentor.webp', small: '/photos/mentor-800.webp', alt: 'Coach with a mentor on the training turf', w: 1200, h: 1600 },
+  { src: '/photos/ankle-assessment.webp', small: '/photos/ankle-assessment-800.webp', alt: 'Coach assessing ankle mobility with a client on a bench', w: 1600, h: 1200 },
+  { src: '/photos/climber.webp', small: '/photos/climber-800.webp', alt: 'Coach working with an athlete on a climbing machine', w: 1600, h: 1066 },
+  { src: '/photos/prone-raise.webp', small: '/photos/prone-raise-800.webp', alt: 'Professional quarterback doing a prone shoulder raise on a bench', w: 1200, h: 1600 },
+  { src: '/photos/kettlebell-carry.webp', small: '/photos/kettlebell-carry-800.webp', alt: 'Coach cueing an athlete through a double kettlebell hold', w: 1600, h: 1047 },
+  { src: '/photos/coach-smile.webp', small: '/photos/coach-smile-800.webp', alt: 'Coach smiling during a training session', w: 1600, h: 1086 },
+  { src: '/photos/film-photo.webp', small: '/photos/film-photo-800.webp', alt: 'Coach with a fellow coach between sessions', w: 828, h: 1250 },
+  { src: '/photos/sled-drill.webp', small: '/photos/sled-drill-800.webp', alt: 'Athletes running a sled push and pull drill', w: 1600, h: 1064 },
+  { src: '/photos/sled-pull.webp', small: '/photos/sled-pull-800.webp', alt: 'Athlete pulling a weighted sled hand over hand', w: 992, h: 1600 },
+  { src: '/photos/squat-spot.webp', small: '/photos/squat-spot-800.webp', alt: 'Coach spotting an athlete through a squat', w: 1600, h: 1066 },
+  { src: '/photos/sled-march.webp', small: '/photos/sled-march-800.webp', alt: 'Coach guiding an athlete through a sled march', w: 990, h: 1600 },
 ];
