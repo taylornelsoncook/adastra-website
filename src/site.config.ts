@@ -97,10 +97,10 @@ export const evaluation = {
   // TODO: a Mindbody checkout link for the $1 evaluation. Until then the button opens the lead form.
   buyUrl: '',
   includes: [
-    'Timed 10- and 20-yard sprints',
-    'Vertical and broad jump testing',
+    'Full 40-yard dash, timed',
+    'Broad jump',
+    'Vertical jump',
     'Movement screen with a coach',
-    'A recommendation for the right group and package',
   ],
 };
 
@@ -162,7 +162,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'What is the $1 speed evaluation?',
-    a: 'A one-time session where a coach times your sprints, tests your jumps and screens how you move. You leave with your numbers and a recommendation for the right group and package. It costs $1.',
+    a: 'A one-time session where a coach times a full 40-yard dash, tests your broad and vertical jump, and screens how you move. You leave knowing your numbers. It costs $1.',
   },
   {
     q: 'How do I get started?',
