@@ -7,7 +7,7 @@ export const headCoach = {
   name: 'Taylor Nelson-Cook',
   creds: 'CSCS, PN1',
   title: 'Founder & Head Performance Coach',
-  photo: '', // TODO: add a photo to public/coaches/ and put its path here, e.g. '/coaches/taylor.webp'
+  photo: '/photos/taylor-nelson-cook.webp',
   instagram: 'https://www.instagram.com/tnelsoncook19/',
   years: '12+',
   summary:

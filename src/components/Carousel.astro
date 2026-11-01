@@ -24,6 +24,23 @@ const { photos, label = 'Training photos' } = Astro.props;
         </li>
       ))}
     </ul>
+    <script is:inline>
+      (function () {
+        // Shuffle the slides once per day (Denver date) so the first photo changes daily.
+        var track = document.currentScript.previousElementSibling;
+        var slides = Array.prototype.slice.call(track.children);
+        var d = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Denver' }).format(new Date());
+        var seed = 0;
+        for (var k = 0; k < d.length; k++) seed = (seed * 31 + d.charCodeAt(k)) >>> 0;
+        function rand() { seed = (seed + 0x6d2b79f5) >>> 0; var t = seed; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }
+        for (var i = slides.length - 1; i > 0; i--) { var j = Math.floor(rand() * (i + 1)); var x = slides[i]; slides[i] = slides[j]; slides[j] = x; }
+        slides.forEach(function (el, n) {
+          el.setAttribute('aria-label', (n + 1) + ' of ' + slides.length);
+          var img = el.querySelector('img'); if (img) img.loading = n === 0 ? 'eager' : 'lazy';
+          track.appendChild(el);
+        });
+      })();
+    </script>
     {photos.length > 1 && (
       <div class="car__nav">
         <button type="button" class="car__btn" data-prev aria-label="Previous photo">&#8249;</button>
@@ -76,7 +93,7 @@ const { photos, label = 'Training photos' } = Astro.props;
   .car__track:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 3px; }
   .car__slide { flex: 0 0 100%; scroll-snap-align: start; }
   .car__slide figure { margin: 0; position: relative; aspect-ratio: 3 / 2; }
-  .car__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .car__slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .car__slide figcaption {
     position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 20px 14px; font-size: .95rem; color: var(--steel);
     background: linear-gradient(transparent, rgba(7, 9, 8, .85));
@@ -88,5 +105,5 @@ const { photos, label = 'Training photos' } = Astro.props;
   }
   .car__btn:hover, .car__btn:focus-visible { border-color: var(--green-bright); color: var(--green-bright); }
   .car__count { font: 600 .85rem/1 var(--display); letter-spacing: .12em; color: var(--steel-muted); min-width: 4.5em; text-align: center; }
-  @media (max-width: 640px) { .car__slide figure { aspect-ratio: 4 / 5; } }
+  @media (max-width: 640px) { .car__slide figure { aspect-ratio: 4 / 3; } }
 </style>
