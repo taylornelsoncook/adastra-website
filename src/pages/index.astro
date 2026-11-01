@@ -11,8 +11,9 @@ import { sports } from '../sports';
 
 const pillars = [
   { t: 'Speed', d: 'Acceleration, top-end speed and change of direction, coached and timed so you can see the gains.' },
-  { t: 'Strength & power', d: 'Lifting built for athletes: weights from your tested maxes, progressions you earn, power that carries to the field.' },
-  { t: 'Durability', d: 'Mobility, recovery and smart training load around your games, so you are fresh and healthy when it counts.' },
+  { t: 'Power', d: 'Explosive jumps, throws and lifts that turn strength into force on the field, fast.' },
+  { t: 'Strength', d: 'Lifting built for athletes: weights from your tested maxes and progressions you earn.' },
+  { t: 'Mo-Sta-Bility', d: 'Mobility, stability and flexibility in one: move freely, control every position, and stay healthy.' },
 ];
 const steps = [
   { n: '01', t: 'Find your group', d: 'College Commits, High School Performance, Youth and HS Lacrosse, or your Kings team.' },
@@ -51,10 +52,10 @@ const steps = [
         <span class="eyebrow">What we train</span>
         <h2>Every part of the athlete.</h2>
       </div>
-      <div class="grid grid--3" style="margin-top:40px">
+      <div class="grid pillars" style="margin-top:40px">
         {pillars.map((p) => (
           <div class="card">
-            <h3>{p.t}</h3>
+            <h3 class="pillar">{p.t}</h3>
             <p class="muted">{p.d}</p>
           </div>
         ))}
@@ -129,6 +130,10 @@ const steps = [
   .hero__art img { width: min(320px, 70%); height: auto; filter: drop-shadow(0 0 60px rgba(63, 196, 108, 0.18)); }
   .hero .lead { margin-bottom: 28px; }
   .at { color: var(--green-bright); }
+  .pillar { text-transform: uppercase; letter-spacing: .06em; }
+  .pillars { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 1000px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pillars { grid-template-columns: 1fr; } }
   .sports-line { margin-top: 32px; color: var(--steel-muted); }
   .steps { list-style: none; padding: 0; margin: 40px 0 0; }
   .steps li { border-top: 2px solid var(--green-deep); padding-top: 22px; }
