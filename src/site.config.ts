@@ -20,7 +20,7 @@ export const site = {
     serviceArea: 'Englewood, Centennial and the south Denver metro',
     mapsUrl: '',
   },
-  email: 'hello@adastrahp.org', // TODO confirm this inbox exists
+  email: 'taylor@adastrahp.org',
   phone: '', // TODO optional
   instagram: 'https://www.instagram.com/adastra.hp/',
 
