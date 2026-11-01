@@ -1,8 +1,9 @@
 ---
-import { combineResults, proAthletes } from '../coaches';
+import { combineResults } from '../coaches';
 interface Props { showNames?: boolean }
 const { showNames = true } = Astro.props;
-const featured = [...proAthletes.nfl.slice(0, 5), ...proAthletes.mlb.slice(0, 2)];
+// Names shown in the proof strip, in order. The full lists live in src/coaches.ts.
+const featured = ['Patrick Mahomes', 'Travis Kelce', 'JT Cross', 'Quinn Ewers', 'Jalen Hurts', 'Bobby Witt Jr.', 'Trevor Story'];
 ---
 <section class="proof">
   <div class="wrap">
