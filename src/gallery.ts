@@ -34,7 +34,7 @@ export const gallery: Photo[] = [
   { src: '/photos/team-session.webp', small: '/photos/team-session-800.webp', alt: 'Coach leading a high school football team training session', w: 1066, h: 1600 },
   { src: '/photos/cu-soccer.webp', small: '/photos/cu-soccer-800.webp', alt: 'Coach with a University of Colorado soccer player after a game', w: 1200, h: 1600 },
   { src: '/photos/youth-field.webp', small: '/photos/youth-field-800.webp', alt: 'Coach walking a young athlete through a drill on an outdoor field', w: 1066, h: 1600 },
-  { src: '/photos/mobility-rack.webp', small: '/photos/mobility-rack-800.webp', alt: 'Coach and a client demonstrating a stretch on a mobility rack', w: 750, h: 918 },
+  { src: '/photos/mobility-rack.webp', small: '/photos/mobility-rack-800.webp', alt: 'Coach and a client demonstrating a stretch on a mobility rack', w: 750, h: 502 },
   { src: '/photos/adult-group.webp', small: '/photos/adult-group-800.webp', alt: 'Coach with an adult group training class', w: 1600, h: 1200 },
   { src: '/photos/mural-group.webp', small: '/photos/mural-group-800.webp', alt: 'Coach with an adult training group in front of a mural', w: 1200, h: 1600 },
   { src: '/photos/gymnastics-meet.webp', small: '/photos/gymnastics-meet-800.webp', alt: 'Coach with a gymnast and her coach at a competition', w: 1200, h: 1600 },
