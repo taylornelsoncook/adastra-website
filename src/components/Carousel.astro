@@ -1,0 +1,92 @@
+---
+import type { Photo } from '../gallery';
+interface Props { photos: Photo[]; label?: string }
+const { photos, label = 'Training photos' } = Astro.props;
+---
+{photos.length > 0 && (
+  <div class="car" role="region" aria-roledescription="carousel" aria-label={label} data-carousel>
+    <ul class="car__track" data-track tabindex="0">
+      {photos.map((p, i) => (
+        <li class="car__slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${photos.length}`}>
+          <figure>
+            <img
+              src={p.src}
+              srcset={`${p.small} 800w, ${p.src} 1600w`}
+              sizes="(max-width: 900px) 100vw, 1100px"
+              alt={p.alt}
+              width={p.w}
+              height={p.h}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+            {p.caption && <figcaption>{p.caption}</figcaption>}
+          </figure>
+        </li>
+      ))}
+    </ul>
+    {photos.length > 1 && (
+      <div class="car__nav">
+        <button type="button" class="car__btn" data-prev aria-label="Previous photo">&#8249;</button>
+        <span class="car__count" aria-live="polite" data-count>1 / {photos.length}</span>
+        <button type="button" class="car__btn" data-next aria-label="Next photo">&#8250;</button>
+      </div>
+    )}
+  </div>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-track]')!;
+    const slides = Array.from(track.children) as HTMLElement[];
+    const count = root.querySelector<HTMLElement>('[data-count]');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0;
+    let timer: number | undefined;
+    const go = (n: number) => {
+      i = (n + slides.length) % slides.length;
+      track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    track.addEventListener('scroll', () => {
+      const n = Math.round(track.scrollLeft / track.clientWidth);
+      if (n !== i) i = n;
+      if (count) count.textContent = `${i + 1} / ${slides.length}`;
+    }, { passive: true });
+    root.querySelector('[data-prev]')?.addEventListener('click', () => { stop(); go(i - 1); });
+    root.querySelector('[data-next]')?.addEventListener('click', () => { stop(); go(i + 1); });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stop(); go(i + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stop(); go(i - 1); }
+    });
+    // Gentle auto-advance; stops for good once the visitor interacts, and never runs with reduced motion.
+    const stop = () => { if (timer) clearInterval(timer); timer = undefined; };
+    if (!reduce && slides.length > 1) {
+      timer = window.setInterval(() => go(i + 1), 5000);
+      ['pointerdown', 'focusin', 'wheel', 'touchstart'].forEach((ev) => root.addEventListener(ev, stop, { once: true, passive: true }));
+    }
+  });
+</script>
+
+<style>
+  .car { position: relative; }
+  .car__track {
+    list-style: none; margin: 0; padding: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; border-radius: 14px; border: 1px solid var(--line); background: var(--ground);
+  }
+  .car__track::-webkit-scrollbar { display: none; }
+  .car__track:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 3px; }
+  .car__slide { flex: 0 0 100%; scroll-snap-align: start; }
+  .car__slide figure { margin: 0; position: relative; aspect-ratio: 3 / 2; }
+  .car__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .car__slide figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 20px 14px; font-size: .95rem; color: var(--steel);
+    background: linear-gradient(transparent, rgba(7, 9, 8, .85));
+  }
+  .car__nav { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 16px; }
+  .car__btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: transparent;
+    color: var(--steel); font-size: 1.6rem; line-height: 1; cursor: pointer;
+  }
+  .car__btn:hover, .car__btn:focus-visible { border-color: var(--green-bright); color: var(--green-bright); }
+  .car__count { font: 600 .85rem/1 var(--display); letter-spacing: .12em; color: var(--steel-muted); min-width: 4.5em; text-align: center; }
+  @media (max-width: 640px) { .car__slide figure { aspect-ratio: 4 / 5; } }
+</style>
