@@ -4,8 +4,8 @@ export type Photo = { src: string; small: string; alt: string; caption?: string;
 
 // The carousel order is shuffled once per day (Denver time) in the browser, so the first photo changes daily.
 export const gallery: Photo[] = [
-  // { src: '/photos/youth-speed-class.webp', small: '/photos/youth-speed-class-800.webp', alt: 'Coach demonstrating a high-knee drill to a youth speed class', w: 1065, h: 1600 },
-  // { src: '/photos/gymnastics-team.webp', small: '/photos/gymnastics-team-800.webp', alt: 'Coach with a gymnastics team at a national team training center', w: 1600, h: 1200 },
+  { src: '/photos/youth-speed-class.webp', small: '/photos/youth-speed-class-800.webp', alt: 'Coach demonstrating a high-knee drill to a youth speed class', w: 1065, h: 1600 },
+  { src: '/photos/gymnastics-team.webp', small: '/photos/gymnastics-team-800.webp', alt: 'Coach with a gymnastics team at a national team training center', w: 1600, h: 1200 },
   { src: '/photos/leg-swing-warmup.webp', small: '/photos/leg-swing-warmup-800.webp', alt: 'Coach watching an athlete’s leg swing during a turf warm-up', w: 1066, h: 1600 },
   { src: '/photos/posture-cue.webp', small: '/photos/posture-cue-800.webp', alt: 'Coach setting a college football player’s posture before a speed drill', w: 1600, h: 931 },
   { src: '/photos/overhead-mobility.webp', small: '/photos/overhead-mobility-800.webp', alt: 'Coach cueing ribcage position during an overhead mobility screen', w: 1067, h: 1600 },
