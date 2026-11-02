@@ -14,7 +14,7 @@ export const headCoach = {
     'Taylor has spent more than 12 years developing athletes at every level, from elementary-school movement classes to NFL Combine prep and MLB off-seasons. Taylor has directed performance programs, led coaching staffs and built training systems used by high school, club and college programs.',
   bio: [
     'Before founding Ad Astra, Taylor spent eight years at APEC (Athletes’ Performance Enhancement Center) as Training Director and Lead Performance Coach. Taylor directed programming there for professional athletes in the NFL, MLB and minor league baseball, ran NFL Combine and Pro Day preparation, and built the youth development system that took athletes from their first day in the weight room to college and beyond.',
-    'Next came Kula Sports Performance, where Taylor served as Vice President of Operations and Master Coach, designing programs for club and high school teams across the Denver area and coaching remote athletes through the KSP online platform. Most recently Taylor has been Director of Performance at KNGDM Sports Performance, leading programming for football, soccer and lacrosse athletes from youth through the pros and mentoring the coaching staff.',
+    'Next came Kula Sports Performance, where Taylor served as Vice President of Operations and Master Coach, designing programs for club and high school teams across the Denver area and coaching remote athletes through the KSP online platform. Most recently Taylor was Director of Performance at KNGDM Sports Performance from December 2024 to October 2026, leading programming for football, soccer and lacrosse athletes from youth through the pros and mentoring the coaching staff.',
     'The approach is simple: test the athlete, train what moves the needle, and measure it again. Every program balances speed, strength, power and durability, and is built around the athlete’s sport, age and season. That is the system Ad Astra athletes train in today.',
   ],
 };
@@ -67,12 +67,12 @@ export const career: Role[] = [
   {
     org: 'KNGDM Sports Performance',
     title: 'Director of Performance',
-    dates: 'Dec 2024 – present',
+    dates: 'Dec 2024 – Oct 2026',
     points: [
-      'Directs all performance programming for football, soccer and lacrosse athletes',
-      'Builds long-term athletic development systems for youth, high school, college and pro athletes',
+      'Directed all performance programming for football, soccer and lacrosse athletes',
+      'Built long-term athletic development systems for youth, high school, college and pro athletes',
       'Created the exercise library and online training resources used by athletes and coaches',
-      'Trains and mentors the coaching staff on program design and coaching standards',
+      'Trained and mentored the coaching staff on program design and coaching standards',
       'Brought in ARPwave recovery technology to speed up rehab and return to play',
     ],
   },
