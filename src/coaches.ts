@@ -6,7 +6,7 @@ export type Role = { org: string; title: string; dates: string; points: string[]
 export const headCoach = {
   name: 'Taylor Nelson-Cook',
   creds: 'CSCS, PN1',
-  title: 'Founder & Head Performance Coach',
+  title: 'CEO, Founder & Lead Coach',
   photo: '/photos/taylor-nelson-cook.webp',
   instagram: 'https://www.instagram.com/tnelsoncook19/',
   years: '12+',
@@ -64,6 +64,15 @@ export const programs = [
 ];
 
 export const career: Role[] = [
+  {
+    org: 'Ad Astra Human Performance',
+    title: 'CEO / Founder / Lead Coach',
+    dates: 'Oct 2026 – present',
+    points: [
+      'Founded Ad Astra to coach speed, power, strength and Mo-Sta-Bility for athletes in the south Denver metro',
+      'Leads coached 80-minute classes for youth, high school, lacrosse and college-commit athletes at Factum',
+    ],
+  },
   {
     org: 'KNGDM Sports Performance',
     title: 'Director of Performance',
