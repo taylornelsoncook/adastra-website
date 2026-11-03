@@ -88,6 +88,13 @@ const service = {
     <div class="wrap">
       <div class="center" style="margin-bottom:40px"><span class="eyebrow">Packages</span><h2>Train every week.</h2></div>
       <PackageCards />
+      {s.slug === 'lacrosse' && (<>
+      <div class="center" style="margin:72px 0 40px" id="youth-lacrosse">
+        <span class="eyebrow">Youth lacrosse · ages 8–12</span>
+        <h2>Youth lacrosse packages.</h2>
+      </div>
+      <PackageCards group="youth-lacrosse" />
+      </>)}
     </div>
   </section>
 

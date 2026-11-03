@@ -53,6 +53,8 @@ export type Package = {
   features: string[];
   featured?: boolean;
   badge?: string;
+  short?: string; // shorter name for the buy button
+  group?: 'main' | 'youth-lacrosse'; // which set of cards it appears in (default main)
 };
 
 // Real packages (from the November 1 schedule post). Sold through Mindbody.
@@ -91,6 +93,32 @@ export const packages: Package[] = [
     featured: true,
     badge: 'Best value',
   },
+  // Youth lacrosse (ages 8-12). Shown on Packages and the lacrosse page.
+  {
+    id: 'youth-lax-1x',
+    name: 'Youth Lacrosse 1x a week',
+    short: '1x a week',
+    where: 'facility',
+    group: 'youth-lacrosse',
+    price: '$160',
+    per: '1 session a week · ages 8–12',
+    buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/cntr_11kPhPxZcbbQxLGADB?mbo_src=links-shortcuts', // Mindbody
+    blurb: 'One coached youth lacrosse session a week at Factum.',
+    features: ['One coached 80-minute session each week', 'Youth Lacrosse class on the schedule', 'Speed, agility and athletic foundations', 'Month to month'],
+  },
+  {
+    id: 'youth-lax-2x',
+    name: 'Youth Lacrosse 2x a week',
+    short: '2x a week',
+    where: 'facility',
+    group: 'youth-lacrosse',
+    price: '$300',
+    per: '2 sessions a week · ages 8–12',
+    buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/cntr_11kPhPxZcbbQxLGAEC?mbo_src=links-shortcuts', // Mindbody
+    blurb: 'Two coached youth lacrosse sessions a week at Factum.',
+    features: ['Two coached 80-minute sessions each week', 'Youth Lacrosse classes on the schedule', 'Speed, agility and athletic foundations', 'Month to month'],
+    featured: true,
+  },
 ];
 
 // $1 speed evaluation: the low-risk first step for new athletes.
@@ -116,9 +144,9 @@ export const teamTraining = {
 
 // College athlete training. Its own Mindbody checkout.
 export const college = {
-  buyUrl: '', // Mindbody. Was https://get.mndbdy.ly/v1kQ5X9TG7b
-  price: '', // TODO e.g. '$350/mo'. Shown on the page once filled in.
-  per: '', // TODO e.g. '12 sessions / month'
+  buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/po_11kPhPxZcbbQxLmu4o?mbo_src=links-shortcuts', // Mindbody, 2026-11-03
+  price: '$300',
+  per: '$300 for winter break',
 };
 
 // Weekly class schedule at Factum. Every class is 80 minutes.

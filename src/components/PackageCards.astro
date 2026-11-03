@@ -1,15 +1,18 @@
 ---
 import { packages, schedule, contactHref, bookingNote } from '../site.config';
 // A package with no checkout link yet sends buyers to a coach instead of a dead end.
+interface Props { group?: 'main' | 'youth-lacrosse' }
+const { group = 'main' } = Astro.props;
+const list = packages.filter((p) => (p.group ?? 'main') === group);
 const buyLink = (p: (typeof packages)[number]) => p.buyUrl || contactHref(`${p.name} package (${p.price}/mo)`);
 ---
 <div class="grid grid--3 pk">
-  {packages.map((p) => (
+  {list.map((p) => (
     <article class:list={['card', 'pk__card', { 'pk__card--featured': p.featured }]} id={p.id}>
       {p.badge && <span class="pk__badge">{p.badge}</span>}
       <span class="pk__where">{p.where === 'facility' ? `At ${schedule.facility}` : 'Train anywhere'}</span>
       <h3>{p.name}</h3>
-      <p class="pk__price">{p.price}<span>/mo</span></p>
+      {p.price ? <p class="pk__price">{p.price}<span>/mo</span></p> : <p class="pk__price pk__price--tbd">See price at checkout</p>}
       <p class="pk__per">{p.per}{p.rate && <> · {p.rate}</>}</p>
       <p class="muted">{p.blurb}</p>
       <ul class="check-list">
@@ -20,7 +23,7 @@ const buyLink = (p: (typeof packages)[number]) => p.buyUrl || contactHref(`${p.n
         href={buyLink(p)}
         data-package={p.id}
       >
-        {p.buyUrl ? `Buy ${p.name}: ${p.price}` : `Email to join: ${p.price}`}
+        {p.buyUrl ? (p.price ? `Buy ${p.short ?? p.name}: ${p.price}` : `Buy ${p.short ?? p.name}`) : `Email to join${p.price ? `: ${p.price}` : ''}`}
       </a>
       {p.buyUrl ? p.buyNote && <p class="pk__note">{p.buyNote}</p> : <p class="pk__note">{bookingNote}</p>}
     </article>
@@ -39,6 +42,7 @@ const buyLink = (p: (typeof packages)[number]) => p.buyUrl || contactHref(`${p.n
   .pk__where { font-size: .75rem; letter-spacing: .24em; text-transform: uppercase; color: var(--green-bright); margin-bottom: 10px; }
   .pk__price { font: 700 2.6rem/1 var(--display); margin: 4px 0 8px; }
   .pk__price span { font-size: 1rem; color: var(--steel-muted); font-weight: 600; margin-left: 4px; }
+  .pk__price--tbd { font-size: 1.4rem; padding: 10px 0; }
   .pk__per { font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--steel-muted); margin-bottom: 14px; }
   .pk__card .check-list { flex: 1; }
   .pk__buy { width: 100%; }
