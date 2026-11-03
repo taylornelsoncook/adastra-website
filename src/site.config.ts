@@ -64,7 +64,7 @@ export const packages: Package[] = [
     price: '$300',
     per: '8 sessions / month',
     rate: '$28 per hour',
-    buyUrl: '', // Mindbody. Was https://get.mndbdy.ly/XSJ7ROp9u7b
+    buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/cntr_11kPhPxZcbbQxLGA97?mbo_src=links-shortcuts', // Mindbody, new link 2026-11-03
     blurb: 'Two coached sessions a week at Factum.',
     features: [
       '8 coached 80-minute sessions each month',
@@ -80,9 +80,7 @@ export const packages: Package[] = [
     price: '$400',
     per: '12 sessions / month',
     rate: '$25 per hour',
-    // Shares the $300 Mindbody link until the $400 package has its own; buyers switch packages at checkout.
-    buyUrl: '', // Was https://get.mndbdy.ly/XSJ7ROp9u7b (shared with $300)
-    buyNote: 'At checkout, switch the package to 12 sessions / $400.',
+    buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/cntr_11kPhPxZcbbQxLGAA8?mbo_src=links-shortcuts', // Mindbody, own link 2026-11-03
     blurb: 'Three coached sessions a week at Factum. The fastest way to improve.',
     features: [
       '12 coached 80-minute sessions each month',
