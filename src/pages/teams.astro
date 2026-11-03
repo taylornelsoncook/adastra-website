@@ -2,10 +2,10 @@
 import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ProofStrip from '../components/ProofStrip.astro';
-import { teamTraining as t, site } from '../site.config';
+import { teamTraining as t, site, contactHref } from '../site.config';
 import { programs } from '../coaches';
 
-const href = t.buyUrl || site.links.leadForm;
+const href = t.buyUrl || contactHref('Team training');
 const loc = `${site.location.city}, ${site.location.region}`;
 const pillars = [
   { t: 'Cohesiveness', d: 'Athletes who sweat together play together. Shared training builds trust, communication and a team that moves as one.' },
@@ -56,7 +56,7 @@ const faqSchema = {
           and a discounted rate for teams of {t.minAthletes} or more.
         </p>
         <div class="btn-row">
-          <a href={href} class="btn btn--primary" rel="noopener" data-package="team">{t.price ? 'Sign up your team' : 'Get team pricing'}</a>
+          <a href={href} class="btn btn--primary" data-package="team">{t.price ? 'Sign up your team' : 'Get team pricing'}</a>
           <a href="#included" class="btn btn--ghost">What's included</a>
         </div>
       </div>
@@ -66,7 +66,7 @@ const faqSchema = {
         <p class="offer__lbl">athletes</p>
         <p class="offer__price">{t.price || 'Discounted per-athlete pricing'}</p>
         {t.price && <p class="muted offer__save">Save 40% vs. the $300 individual rate</p>}
-        <a href={href} class="btn btn--primary" rel="noopener" data-package="team">{t.price ? 'Sign up your team' : 'Ask for team pricing'}</a>
+        <a href={href} class="btn btn--primary" data-package="team">{t.price ? 'Sign up your team' : 'Ask for team pricing'}</a>
       </div>
     </div>
   </section>
@@ -88,7 +88,7 @@ const faqSchema = {
       <span class="eyebrow">What's included</span>
       <h2>Everything your team needs.</h2>
       <ul class="check-list big">{included.map((i) => <li>{i}</li>)}</ul>
-      <a href={href} class="btn btn--primary" rel="noopener" data-package="team">{t.price ? 'Sign up your team' : 'Get team pricing'}</a>
+      <a href={href} class="btn btn--primary" data-package="team">{t.price ? 'Sign up your team' : 'Get team pricing'}</a>
     </div>
   </section>
 

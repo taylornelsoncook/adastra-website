@@ -1,5 +1,5 @@
 ---
-import { site } from '../site.config';
+import { site, contactHref } from '../site.config';
 interface Props { title?: string; text?: string }
 const {
   title = 'Your next season starts now.',
@@ -13,7 +13,7 @@ const {
     <p class="lead">{text}</p>
     <div class="btn-row">
       <a href="/packages/" class="btn btn--primary">See packages</a>
-      <a href={site.links.leadForm} class="btn btn--ghost" rel="noopener">Ask a coach</a>
+      <a href={contactHref()} class="btn btn--ghost">Ask a coach</a>
     </div>
   </div>
 </section>

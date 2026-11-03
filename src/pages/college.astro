@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ProofStrip from '../components/ProofStrip.astro';
 import EvalOffer from '../components/EvalOffer.astro';
-import { college, schedule, site } from '../site.config';
+import { contactHref, bookingNote, college, schedule, site } from '../site.config';
 
 const sessions = schedule.classes.filter((c) => /college/i.test(c.name));
 const focus = [
@@ -37,11 +37,12 @@ const service = {
           Combine and Pro Days, in coached 80-minute sessions.
         </p>
         <div class="btn-row">
-          <a href={college.buyUrl} class="btn btn--primary" rel="noopener" data-package="college">
-            Buy college training{college.price && `: ${college.price}`}
+          <a href={college.buyUrl || contactHref('College training')} class="btn btn--primary" data-package="college">
+            {college.buyUrl ? 'Buy college training' : 'Email to join college training'}{college.price && `: ${college.price}`}
           </a>
-          <a href={site.links.leadForm} class="btn btn--ghost" rel="noopener">Ask a coach</a>
+          <a href={contactHref('College training question')} class="btn btn--ghost">Ask a coach</a>
         </div>
+        {!college.buyUrl && <p class="muted small">{bookingNote}</p>}
         {college.per && <p class="muted per">{college.per}</p>}
       </div>
       <div class="card sessions">
@@ -70,7 +71,7 @@ const service = {
         {focus.map((f) => <div class="card"><h3>{f.t}</h3><p class="muted">{f.d}</p></div>)}
       </div>
       <div class="center" style="margin-top:40px">
-        <a href={college.buyUrl} class="btn btn--primary" rel="noopener" data-package="college">Buy college training</a>
+        <a href={college.buyUrl || contactHref('College training')} class="btn btn--primary" data-package="college">{college.buyUrl ? 'Buy college training' : 'Email to join college training'}</a>
       </div>
     </div>
   </section>

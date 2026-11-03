@@ -1,7 +1,7 @@
 ---
-import { packages, schedule, site } from '../site.config';
+import { packages, schedule, contactHref, bookingNote } from '../site.config';
 // A package with no checkout link yet sends buyers to a coach instead of a dead end.
-const buyLink = (p: (typeof packages)[number]) => p.buyUrl || site.links.leadForm;
+const buyLink = (p: (typeof packages)[number]) => p.buyUrl || contactHref(`${p.name} package (${p.price}/mo)`);
 ---
 <div class="grid grid--3 pk">
   {packages.map((p) => (
@@ -18,12 +18,11 @@ const buyLink = (p: (typeof packages)[number]) => p.buyUrl || site.links.leadFor
       <a
         class:list={['btn', p.featured ? 'btn--primary' : 'btn--ghost', 'pk__buy']}
         href={buyLink(p)}
-        rel="noopener"
         data-package={p.id}
       >
-        {p.buyUrl ? `Buy ${p.name}: ${p.price}` : `Ask to join: ${p.price}`}
+        {p.buyUrl ? `Buy ${p.name}: ${p.price}` : `Email to join: ${p.price}`}
       </a>
-      {p.buyNote && <p class="pk__note">{p.buyNote}</p>}
+      {p.buyUrl ? p.buyNote && <p class="pk__note">{p.buyNote}</p> : <p class="pk__note">{bookingNote}</p>}
     </article>
   ))}
 </div>

@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PackageCards from '../components/PackageCards.astro';
 import FaqList from '../components/FaqList.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { packages, site } from '../site.config';
+import { contactHref, packages, site } from '../site.config';
 
 const offers = {
   '@context': 'https://schema.org',
@@ -35,7 +35,7 @@ const offers = {
       </div>
       <PackageCards />
       <p class="center muted note">
-        College athlete? See <a href="/college/">college training</a>. Checkout is through Mindbody. Training away from Factum? <a href={site.links.leadForm} rel="noopener">Ask a coach</a> about
+        College athlete? See <a href="/college/">college training</a>. Training away from Factum? <a href={contactHref('Training away from Factum')}>Ask a coach</a> about
         remote programming.
       </p>
     </div>

@@ -24,16 +24,21 @@ export const site = {
   phone: '', // TODO optional
   instagram: 'https://www.instagram.com/adastra.hp/',
 
-  // Where each purchase path goes.
+  // Where each purchase path goes. ALL BOOKING LINKS ARE OFF (owner's call, 2026-11-03): new links are coming.
+  // While a link is empty, its button emails the coach instead (see contactHref below).
+  // Paste each new link here and in the buyUrl fields further down, then push.
   links: {
-    // Factum packages are sold through Mindbody. TODO: paste the Mindbody pricing/checkout link.
-    mindbody: 'https://clients.mindbodyonline.com/',
-    // Train-anywhere packages are sold through Diamond Protocol (Stripe).
-    diamondBook: 'https://app.diamondprotocol.org/book',
-    // Diamond Protocol "Ask about training" lead form: inquiries land in Leads with automatic follow-up.
-    leadForm: 'https://app.diamondprotocol.org/start',
+    mindbody: '', // was https://clients.mindbodyonline.com/
+    diamondBook: '', // was https://app.diamondprotocol.org/book
+    leadForm: '', // "Ask a coach" form. Was https://app.diamondprotocol.org/start
   },
 };
+
+// Where a button goes when it has no link yet: an email to the coach with a subject line.
+export const contactHref = (subject = 'Training inquiry') =>
+  site.links.leadForm || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+// Shown under buttons while booking links are off.
+export const bookingNote = `Online booking opens soon. Email ${site.email} and we'll get you set up.`;
 
 export type Package = {
   id: string;
@@ -59,7 +64,7 @@ export const packages: Package[] = [
     price: '$300',
     per: '8 sessions / month',
     rate: '$28 per hour',
-    buyUrl: 'https://get.mndbdy.ly/XSJ7ROp9u7b', // Mindbody
+    buyUrl: '', // Mindbody. Was https://get.mndbdy.ly/XSJ7ROp9u7b
     blurb: 'Two coached sessions a week at Factum.',
     features: [
       '8 coached 80-minute sessions each month',
@@ -76,7 +81,7 @@ export const packages: Package[] = [
     per: '12 sessions / month',
     rate: '$25 per hour',
     // Shares the $300 Mindbody link until the $400 package has its own; buyers switch packages at checkout.
-    buyUrl: 'https://get.mndbdy.ly/XSJ7ROp9u7b',
+    buyUrl: '', // Was https://get.mndbdy.ly/XSJ7ROp9u7b (shared with $300)
     buyNote: 'At checkout, switch the package to 12 sessions / $400.',
     blurb: 'Three coached sessions a week at Factum. The fastest way to improve.',
     features: [
@@ -113,7 +118,7 @@ export const teamTraining = {
 
 // College athlete training. Its own Mindbody checkout.
 export const college = {
-  buyUrl: 'https://get.mndbdy.ly/v1kQ5X9TG7b', // Mindbody
+  buyUrl: '', // Mindbody. Was https://get.mndbdy.ly/v1kQ5X9TG7b
   price: '', // TODO e.g. '$350/mo'. Shown on the page once filled in.
   per: '', // TODO e.g. '12 sessions / month'
 };
@@ -166,6 +171,6 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'How do I get started?',
-    a: 'Book a $1 speed evaluation, or pick a package and buy it online, then book into your group on the schedule. Questions first? Ask a coach and we will get back to you.',
+    a: 'Book a $1 speed evaluation or pick a package, then book into your group on the schedule. Online booking opens soon; until then, email taylor@adastrahp.org and we will get you set up.',
   },
 ];

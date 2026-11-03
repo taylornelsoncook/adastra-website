@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../site.config';
+import { contactHref, site } from '../site.config';
 ---
 <Base title="Contact" description="Ask a coach about Ad Astra training. Tell us about your athlete and we will recommend the right package and a free evaluation.">
   <section class="section section--glow">
@@ -12,7 +12,7 @@ import { site } from '../site.config';
         evaluation time.
       </p>
       <div class="btn-row">
-        <a href={site.links.leadForm} class="btn btn--primary" rel="noopener">Ask about training</a>
+        <a href={contactHref()} class="btn btn--primary">Ask about training</a>
         <a href="/packages/" class="btn btn--ghost">See packages</a>
       </div>
       <p class="muted contact">

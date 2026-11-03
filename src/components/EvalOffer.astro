@@ -1,8 +1,8 @@
 ---
-import { evaluation as e, site } from '../site.config';
+import { evaluation as e, contactHref, bookingNote } from '../site.config';
 interface Props { sport?: string }
 const { sport } = Astro.props;
-const href = e.buyUrl || site.links.leadForm;
+const href = e.buyUrl || contactHref(`$1 speed evaluation`);
 ---
 <section class="eval" id="evaluation">
   <div class="wrap eval__in">
@@ -10,7 +10,8 @@ const href = e.buyUrl || site.links.leadForm;
       <span class="eyebrow">New athletes start here</span>
       <h2>{sport ? `${sport} speed evaluation` : 'Speed evaluation'} for <span class="eval__price">{e.price}</span></h2>
       <p class="muted">Find out where you stand before you commit. A coach tests you, shows you the numbers, and tells you exactly what to train.</p>
-      <a href={href} class="btn btn--primary" rel="noopener" data-package="evaluation">Book your {e.price} evaluation</a>
+      <a href={href} class="btn btn--primary" data-package="evaluation">{e.buyUrl ? `Book your ${e.price} evaluation` : `Email to book your ${e.price} evaluation`}</a>
+      {!e.buyUrl && <p class="muted small" style="margin-top:12px">{bookingNote}</p>}
     </div>
     <ul class="check-list eval__list">
       {e.includes.map((i) => <li>{i}</li>)}
