@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { adults, contactHref, forms, site } from '../../site.config';
+
+const loc = `${site.location.city}, ${site.location.region}`;
+const bookHref = adults.personalTrainingUrl || contactHref('Adult personal training');
+const waitlistHref = forms.adultWaitlist || `mailto:${site.email}?subject=${encodeURIComponent('Adult program waitlist')}`;
+const external = (u: string) => (u.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {});
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Adult personal training',
+  provider: { '@type': 'Organization', name: site.name, url: site.url },
+  areaServed: site.location.serviceArea,
+  description: 'One-on-one personal training for adults: strength, mobility and athletic movement, coached by a CSCS with 12+ years of experience.',
+};
+---
+<Base
+  title={`Adult Personal Training in ${loc}`}
+  description={`One-on-one personal training for adults in ${loc}. Get strong, move without pain and feel athletic again with a coach who has trained NFL and MLB athletes. Join the waitlist for our adult program.`}
+  schema={[service]}
+>
+  <section class="section section--glow">
+    <div class="wrap pt">
+      <div>
+        <span class="eyebrow">Adults · Personal training</span>
+        <h1 class="metal">Train like an athlete again.</h1>
+        <p class="lead">
+          One-on-one training with Taylor Nelson-Cook, CSCS. The same coaching, testing and programming behind 200+ NFL Combine
+          athletes, built around your goals, your schedule and your body.
+        </p>
+        <div class="btn-row">
+          <a href={bookHref} class="btn btn--primary" {...external(bookHref)}>Ask about personal training</a>
+          <a href="#waitlist" class="btn btn--ghost">Join the adult program waitlist</a>
+        </div>
+      </div>
+      <figure class="pt__photo">
+        <img src="/photos/ankle-assessment-800.webp" srcset="/photos/ankle-assessment-800.webp 800w, /photos/ankle-assessment.webp 1600w" sizes="(max-width: 900px) 100vw, 460px" alt="Coach assessing ankle mobility with a client on a bench" width="1600" height="1200" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">What we focus on</span>
+        <h2>Built for adults who want more than a workout.</h2>
+      </div>
+      <div class="grid pt__grid">
+        <div class="card"><h3>Strength</h3><p class="muted">Get measurably stronger with lifting that starts where you are and progresses every block.</p></div>
+        <div class="card"><h3>Mo-Sta-Bility</h3><p class="muted">Mobility, stability and flexibility work so you move well and stay out of pain.</p></div>
+        <div class="card"><h3>Speed and power</h3><p class="muted">Sprinting, jumping and throwing, scaled to you, to keep you athletic for decades.</p></div>
+        <div class="card"><h3>A plan, not a guess</h3><p class="muted">An assessment first, then a program written for your goals, schedule and training history.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--glow" id="waitlist">
+    <div class="wrap center narrow">
+      <span class="eyebrow">Coming {adults.programStart}</span>
+      <h2 class="metal">Adult group program waitlist.</h2>
+      <p class="lead">
+        We are launching coached group training for adults on {adults.programStart}. Join the waitlist and you will hear first
+        about the schedule, pricing and founding member spots.
+      </p>
+      <div class="btn-row" style="justify-content:center">
+        <a href={waitlistHref} class="btn btn--primary" {...external(waitlistHref)}>Join the waitlist</a>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Start with one session." text="Tell us your goals and a coach will recommend where to start." />
+</Base>
+
+<style>
+  .pt { display: grid; grid-template-columns: 1fr 460px; gap: 56px; align-items: center; }
+  .pt__photo { margin: 0; }
+  .pt__photo img { width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--line); display: block; }
+  .pt__grid { grid-template-columns: repeat(2, 1fr); max-width: 980px; margin: 0 auto; }
+  .narrow { max-width: 760px; }
+  @media (max-width: 900px) { .pt { grid-template-columns: 1fr; gap: 32px; } .pt__photo { max-width: 520px; } }
+  @media (max-width: 700px) { .pt__grid { grid-template-columns: 1fr; } }
+</style>

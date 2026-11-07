@@ -34,9 +34,22 @@ export const site = {
   },
 };
 
+// Google Forms. Paste each form's share link (the "Send" > link icon, e.g. https://forms.gle/abc123) and push.
+// While a link is empty, the button emails the coach instead.
+export const forms = {
+  contact: '', // general "Ask a coach" contact form. Shown on the Contact page.
+  adultWaitlist: '', // waitlist for the adult group program
+};
+
+// Adults: one-on-one personal training now; an adult group program is planned.
+export const adults = {
+  programStart: 'August 1', // planned start of the adult group program
+  personalTrainingUrl: '', // optional booking link (e.g. Mindbody) for personal training
+};
+
 // Where a button goes when it has no link yet: an email to the coach with a subject line.
 export const contactHref = (subject = 'Training inquiry') =>
-  site.links.leadForm || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+  forms.contact || site.links.leadForm || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 // Shown under buttons while booking links are off.
 export const bookingNote = `Online booking opens soon. Email ${site.email} and we'll get you set up.`;
 
