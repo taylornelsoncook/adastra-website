@@ -181,71 +181,80 @@ export const sports: Sport[] = [
   },
 ];
 
-// Sample session blocks shown on each sport page: one photo plus example warm-up, speed, power and strength work.
-// These are generic examples. Each athlete's actual program is set from their evaluation, age and season.
+// "Our focus" block on each sport page: one photo, a short summary, and one line per training area.
+// Written as what we focus on for the sport, not a session plan. Each athlete's program is set from their evaluation, age and season.
 export type Training = {
   photo: { src: string; small: string; alt: string; w: number; h: number };
-  warmup: string[];
-  speed: string[];
-  power: string[];
-  strength: string[];
+  summary: string;
+  warmup: string;
+  speed: string;
+  power: string;
+  strength: string;
 };
 
 export const training: Record<string, Training> = {
   football: {
     photo: { src: '/photos/qb-throw.webp', small: '/photos/qb-throw-800.webp', alt: 'Quarterback throwing as the coach watches during an outdoor session', w: 1068, h: 1600 },
-    warmup: ['Leg swings, front to back and side to side', 'World’s greatest stretch with a reach', 'A-march and A-skip', 'Two build-up runs at 70 and 85 percent'],
-    speed: ['10-yard starts from a three-point stance', 'Resisted sled sprints, 10 to 20 yards', 'Flying 20s for top speed', '5-10-5 pro shuttle for change of direction'],
-    power: ['Broad jumps and triple broad jumps', 'Box jumps from a quarter squat', 'Med ball chest pass and scoop toss', 'Hang power clean (high school and up)'],
-    strength: ['Trap bar deadlift', 'Front or back squat', 'Bench press and dumbbell row', 'Split squats and Nordic hamstring curls'],
+    summary: 'Football is decided in short bursts: the first three steps, the collision and the next snap. Training centers on acceleration, force and the strength to absorb contact for a full season.',
+    warmup: 'Hips, ankles and hamstrings prepared for explosive starts, so the first sprint of the day is a fast one.',
+    speed: 'Acceleration out of a stance and the first 10 yards, with top-speed work for skill positions.',
+    power: 'Jumping and throwing to turn strength into explosiveness off the line and through contact.',
+    strength: 'Lower-body and upper-body strength built from tested numbers to hold up to hits all season.',
   },
   lacrosse: {
     photo: { src: '/photos/youth-speed-class.webp', small: '/photos/youth-speed-class-800.webp', alt: 'Coach demonstrating a high-knee drill to a youth speed class', w: 1065, h: 1600 },
-    warmup: ['Walking knee hugs and quad pulls', 'Lateral lunges and hip openers', 'Carioca and backpedal', 'Line hops for quick feet'],
-    speed: ['Short sprints from a ground-ball position', 'Cone dodges: plant, cut and accelerate', 'Defensive drop step into a sprint', 'Repeat 30-yard sprints with short rest'],
-    power: ['Lateral bounds with a held landing', 'Rotational med ball throws for shot speed', 'Skater jumps', 'Box jumps'],
-    strength: ['Goblet squats', 'Single-leg Romanian deadlifts', 'Push-ups and inverted rows', 'Pallof press and side planks'],
+    summary: 'Lacrosse rewards the player who can cut, accelerate and do it again in the fourth quarter. Training centers on change of direction, repeat sprints and rotational power for shooting and contact.',
+    warmup: 'Hips, groin and ankles prepared for hard cuts and quick changes of direction.',
+    speed: 'Acceleration out of dodges and ground balls, and the conditioning to repeat it all game.',
+    power: 'Lateral and rotational power that shows up in dodges, shot speed and checks.',
+    strength: 'Single-leg, upper-body and core strength that protects knees and ankles and wins contact.',
   },
   soccer: {
     photo: { src: '/photos/cu-soccer.webp', small: '/photos/cu-soccer-800.webp', alt: 'Coach with a University of Colorado soccer player after a game', w: 1200, h: 1600 },
-    warmup: ['Adductor rockbacks and hip circles', 'Walking lunges with a twist', 'A-skips and B-skips', 'Lateral shuffles and crossover runs'],
-    speed: ['5 to 10-yard acceleration starts', 'Curved sprints like an overlapping run', 'Flying 20s for top speed', 'Decelerate-and-turn drills'],
-    power: ['Single-leg hops for distance', 'Lateral bounds with a held landing', 'Med ball overhead throws', 'Pogo jumps for ankle stiffness'],
-    strength: ['Rear-foot elevated split squats', 'Nordic hamstring curls', 'Copenhagen side planks for the groin', 'Single-leg calf raises'],
+    summary: 'Soccer players sprint, slow down and turn hundreds of times a match. Training centers on getting to the ball first, stopping and turning under control, and staying healthy through a long season.',
+    warmup: 'Hips, groin and hamstrings prepared for sprinting and turning, the areas soccer injuries hit most.',
+    speed: 'Short acceleration and top speed for runs in behind and recovery on defense.',
+    power: 'Single-leg power for explosive first steps, jumps and stronger tackles.',
+    strength: 'Hamstring, groin and calf strength that holds up to 90 minutes and a full season.',
   },
   baseball: {
     photo: { src: '/photos/banded-lunge-start.webp', small: '/photos/banded-lunge-start-800.webp', alt: 'Coach holding a resistance band as an athlete drives out of a lunge start', w: 1600, h: 1152 },
-    warmup: ['Thoracic rotations on all fours', 'Band pull-aparts and arm circles', 'Walking lunges with an overhead reach', 'Build-up runs'],
-    speed: ['Lead-off starts and first-step steals', '10-yard sprints from a split stance', 'Home-to-first sprints', 'Crossover steps into a sprint'],
-    power: ['Rotational med ball scoop throws', 'Shot-put med ball throws from the stance', 'Lateral bounds', 'Broad jumps'],
-    strength: ['Trap bar deadlift', 'Goblet or front squat', 'Single-arm dumbbell row', 'Rotator cuff band work and half-kneeling chops'],
+    summary: 'Baseball is a rotational, explosive sport played in single efforts. Training centers on first-step speed, rotational power for hitting and throwing, and keeping shoulders and elbows healthy.',
+    warmup: 'Thoracic spine, hips and shoulders prepared to rotate freely and throw safely.',
+    speed: 'First-step quickness for stealing, fielding and running the bases.',
+    power: 'Rotational power from the ground up for bat speed and throwing velocity.',
+    strength: 'Leg and trunk strength to drive power, plus shoulder and arm care for a long season.',
   },
   basketball: {
     photo: { src: '/photos/skip-demo.webp', small: '/photos/skip-demo-800.webp', alt: 'Coach demonstrating a high-knee skip as pro athletes watch', w: 1600, h: 1097 },
-    warmup: ['Ankle rocks and calf mobility', 'Lateral lunges', 'Skips for height', 'Defensive slides at half speed'],
-    speed: ['First-step drives from a triple-threat stance', 'Defensive slide into a sprint', 'Baseline-to-baseline sprints', 'Reactive cone drills off a coach’s call'],
-    power: ['Approach jumps off one and two feet', 'Depth jumps (trained athletes only)', 'Med ball slams', 'Lateral bounds with a held landing'],
-    strength: ['Front squats', 'Romanian deadlifts', 'Single-leg step-ups', 'Push-ups, rows and core anti-rotation work'],
+    summary: 'Basketball is a game of first steps, jumps and landings, repeated all game. Training centers on a quicker first step, a higher and more repeatable jump, and the strength to land safely.',
+    warmup: 'Ankles, knees and hips prepared for jumping and landing on a hard court.',
+    speed: 'First-step quickness on drives and defensive slides, and sprinting the floor.',
+    power: 'Vertical and lateral power for rebounds, finishing at the rim and closeouts.',
+    strength: 'Leg and trunk strength to absorb landings, hold position and finish through contact.',
   },
   swimming: {
     photo: { src: '/photos/shoulder-mobility.webp', small: '/photos/shoulder-mobility-800.webp', alt: 'Coach correcting shoulder position during a ring mobility drill', w: 1600, h: 1039 },
-    warmup: ['Band pull-aparts and external rotations', 'Thoracic spine rotations', 'Ankle and hip mobility', 'Streamline squats with arms overhead'],
-    speed: ['Short dryland sprints for leg drive', 'Start reaction drills off a signal', 'Quick-feet ladder work', 'Sprint skips'],
-    power: ['Squat jumps for starts and walls', 'Broad jumps', 'Med ball overhead slams', 'Med ball chest pass'],
-    strength: ['Pull-ups or assisted pull-ups', 'Goblet squats', 'Single-arm rows', 'Dead bugs, side planks and Y-T-W raises'],
+    summary: 'Swimmers win races off the blocks and the walls and need shoulders that last through high yardage. Dryland training centers on explosive starts and turns, a strong trunk, and shoulder health.',
+    warmup: 'Shoulders, upper back and ankles prepared to move through a full range without pain.',
+    speed: 'Quick reaction and leg drive for faster starts off the blocks.',
+    power: 'Jumping power that carries into starts and push-offs from the wall.',
+    strength: 'Pulling, leg and core strength, with shoulder work that holds up to the yardage.',
   },
   'track-and-field': {
     photo: { src: '/photos/sprint-talk.webp', small: '/photos/sprint-talk-800.webp', alt: 'Coach explaining a sprint cue to a young athlete on an indoor track', w: 1600, h: 1067 },
-    warmup: ['Leg swings and hip mobility', 'A-march, A-skip and B-skip', 'Straight-leg bounds', 'Two to three build-ups'],
-    speed: ['Block or three-point starts, 10 to 30 meters', 'Resisted sled sprints', 'Flying 30s for max velocity', 'Wicket runs for rhythm'],
-    power: ['Standing broad and triple jumps', 'Bounding for distance', 'Hurdle hops', 'Overhead back med ball throws'],
-    strength: ['Back squat', 'Hip thrusts', 'Nordic hamstring curls', 'Single-leg calf raises'],
+    summary: 'Track athletes are measured to the hundredth, so technique and force both matter. Training centers on sprint mechanics, acceleration and top speed, and the power behind jumps and throws.',
+    warmup: 'Sprint drills that rehearse posture and rhythm before every session.',
+    speed: 'Starts, acceleration and max-velocity work coached for technique and timed for progress.',
+    power: 'Bounding and jumping that build elastic, reactive power for sprints and jumps.',
+    strength: 'Hip, hamstring and calf strength to run faster and keep hamstrings healthy.',
   },
   golf: {
     photo: { src: '/photos/overhead-mobility.webp', small: '/photos/overhead-mobility-800.webp', alt: 'Coach cueing ribcage position during an overhead mobility screen', w: 1067, h: 1600 },
-    warmup: ['Open books for thoracic rotation', '90/90 hip switches', 'Pelvic tilts and turns in a golf posture', 'Half-speed swings with a club'],
-    speed: ['Speed-stick or overspeed swings', 'Short sprints for general athleticism', 'Lateral shuffle into a stop', 'Quick-feet ladder work'],
-    power: ['Rotational med ball throws into a wall', 'Step-behind med ball scoop throws', 'Squat jumps', 'Lateral bounds'],
-    strength: ['Trap bar deadlift', 'Split squats', 'Single-arm cable rows', 'Pallof press and anti-rotation holds'],
+    summary: 'Golfers gain distance by moving well and producing speed from the ground up. Training centers on hip and upper-back mobility, rotational power for clubhead speed, and a resilient lower back.',
+    warmup: 'Hips and upper back prepared to rotate fully, so the swing is not forced through the lower back.',
+    speed: 'Clubhead speed training and quick, athletic footwork.',
+    power: 'Rotational power that transfers from the legs through the trunk into the club.',
+    strength: 'Leg and core strength that supports a stable swing and protects the lower back.',
   },
 };

@@ -57,25 +57,24 @@ const service = {
   </section>
 
   {tr && (
-    <section class="section section--tight sample" id="sample-session">
+    <section class="section section--tight sample" id="our-focus">
       <div class="wrap sample__in">
         <figure class="sample__photo">
           <img src={tr.photo.small} srcset={`${tr.photo.small} 800w, ${tr.photo.src} 1600w`} sizes="(max-width: 900px) 100vw, 420px" alt={tr.photo.alt} width={tr.photo.w} height={tr.photo.h} loading="lazy" decoding="async" />
         </figure>
         <div>
-          <span class="eyebrow">Sample {s.name.toLowerCase()} session</span>
-          <h2>What a {s.name.toLowerCase()} session looks like.</h2>
-          <p class="muted">Every session runs in the same order: warm up, then speed while the legs are fresh, then power, then strength. These are examples. Your athlete's exact drills, sets and loads come from their evaluation, age and season.</p>
-          <div class="grid sample__grid">
+          <span class="eyebrow">Our {s.name.toLowerCase()} focus</span>
+          <h2>What we focus on for {s.athlete}.</h2>
+          <p class="lead sample__lead">{tr.summary}</p>
+          <dl class="sample__list">
             {[
-              { t: 'Warm-up', items: tr.warmup },
-              { t: 'Speed', items: tr.speed },
-              { t: 'Power', items: tr.power },
-              { t: 'Strength', items: tr.strength },
-            ].map((b) => (
-              <div class="card"><h3>{b.t}</h3><ul>{b.items.map((i) => <li>{i}</li>)}</ul></div>
-            ))}
-          </div>
+              { t: 'Warm-up', d: tr.warmup },
+              { t: 'Speed', d: tr.speed },
+              { t: 'Power', d: tr.power },
+              { t: 'Strength', d: tr.strength },
+            ].map((b) => (<div><dt>{b.t}</dt><dd>{b.d}</dd></div>))}
+          </dl>
+          <p class="muted">Every athlete's program is set from their evaluation, age and season.</p>
         </div>
       </div>
     </section>
@@ -155,9 +154,12 @@ const service = {
   .sample__in { display: grid; grid-template-columns: 420px 1fr; gap: 48px; align-items: start; }
   .sample__photo { margin: 0; position: sticky; top: 100px; }
   .sample__photo img { width: 100%; height: auto; border-radius: var(--radius-sm); border: 1px solid var(--line); display: block; }
-  .sample__grid { grid-template-columns: repeat(2, 1fr); margin-top: 24px; }
-  .sample__grid ul { margin: 0; padding-left: 18px; color: var(--steel-muted); }
-  .sample__grid li { margin: 6px 0; }
+  .sample__in { align-items: center; }
+  .sample__lead { margin-top: 12px; }
+  .sample__list { margin: 28px 0 20px; border-top: 1px solid var(--line); }
+  .sample__list div { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .sample__list dt { color: var(--green-bright); letter-spacing: .14em; text-transform: uppercase; font-weight: 600; font-size: .85rem; padding-top: 3px; }
+  .sample__list dd { margin: 0; color: var(--steel-muted); }
   @media (max-width: 900px) { .sample__in { grid-template-columns: 1fr; gap: 28px; } .sample__photo { position: static; max-width: 460px; } }
-  @media (max-width: 700px) { .focus, .sample__grid { grid-template-columns: 1fr; } .sess li { grid-template-columns: 1fr auto; } .sess li span:not(.t) { grid-column: 1; } }
+  @media (max-width: 700px) { .focus { grid-template-columns: 1fr; } .sample__list div { grid-template-columns: 1fr; gap: 4px; } .sess li { grid-template-columns: 1fr auto; } .sess li span:not(.t) { grid-column: 1; } }
 </style>
