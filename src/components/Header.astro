@@ -1,11 +1,16 @@
 ---
 import { sports } from '../sports';
-const nav = [
+type NavItem = { href: string; label: string; match?: string; children?: { href: string; label: string }[] };
+const nav: NavItem[] = [
   { href: '/schedule/', label: 'Schedule' },
   { href: '/packages/', label: 'Packages' },
-  { href: '/sports/', label: 'Sports' },
+  { href: '/sports/', label: 'Sports', children: sports.map((s) => ({ href: `/sports/${s.slug}/`, label: s.name })) },
   { href: '/college/', label: 'College' },
   { href: '/teams/', label: 'Teams' },
+  { href: '/adults/personal-training/', label: 'Adults', match: '/adults/', children: [
+    { href: '/adults/personal-training/', label: 'Personal Training' },
+    { href: '/adults/personal-training/#waitlist', label: 'Adult Program Waitlist' },
+  ] },
   { href: '/coaches/', label: 'Coaches' },
   { href: '/start/', label: 'Contact' },
 ];
@@ -20,12 +25,12 @@ const path = Astro.url.pathname;
       <input type="checkbox" id="nav-toggle" class="hdr__toggle" />
       <label for="nav-toggle" class="hdr__burger" aria-label="Menu"><span></span></label>
       <ul class="hdr__nav">
-        {nav.map((n) => n.href === '/sports/' ? (
+        {nav.map((n) => n.children ? (
           <li class="hdr__drop">
-            <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined} aria-haspopup="true">{n.label}<span class="hdr__caret" aria-hidden="true"></span></a>
-            <ul class="hdr__sub">
-              {sports.map((s) => (
-                <li><a href={`/sports/${s.slug}/`} aria-current={path.startsWith(`/sports/${s.slug}/`) ? 'page' : undefined}>{s.name}</a></li>
+            <a href={n.href} aria-current={path.startsWith(n.match ?? n.href) ? 'page' : undefined} aria-haspopup="true">{n.label}<span class="hdr__caret" aria-hidden="true"></span></a>
+            <ul class={`hdr__sub${n.children.length < 4 ? ' hdr__sub--short' : ''}`}>
+              {n.children.map((c) => (
+                <li><a href={c.href} aria-current={!c.href.includes('#') && path === c.href ? 'page' : undefined}>{c.label}</a></li>
               ))}
             </ul>
           </li>
@@ -66,7 +71,7 @@ const path = Astro.url.pathname;
   .hdr__sub a:not(.btn) { display: block; padding: 9px 16px; white-space: nowrap; }
   .hdr__sub a:not(.btn):hover { background: var(--surface); }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1120px) {
     .hdr__logo img { height: 48px; }
     .hdr__burger {
       display: flex; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer;
@@ -92,6 +97,7 @@ const path = Astro.url.pathname;
     }
     .hdr__sub a:not(.btn) { padding: 11px 0; font-size: .95rem; }
     .hdr__sub a:not(.btn):hover { background: none; }
+    .hdr__sub--short { grid-template-columns: 1fr; }
     .hdr__toggle:checked ~ .hdr__nav { display: flex; }
   }
 </style>
