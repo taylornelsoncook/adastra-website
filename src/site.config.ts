@@ -218,3 +218,24 @@ export const faqs: { q: string; a: string }[] = [
     a: 'Book a $1 speed evaluation or pick a package, then book into your group on the schedule. Online booking opens soon; until then, email taylor@adastrahp.org and we will get you set up.',
   },
 ];
+
+// Legacy Discount: founders price lock for the first 100 members (owner-approved copy from the owners site, 2026-11-08).
+// Paste the $100 deposit checkout link into depositUrl. While it is empty, the Reserve button emails the coach.
+export const legacy = {
+  spots: 100,
+  deposit: '$100',
+  depositUrl: '',
+  packages: [
+    { name: 'Polaris', price: '$600', per: 'a month', tag: 'Unlimited · Our flagship · Opens with our facility', featured: true,
+      blurb: 'The North Star, the one fixed point every navigator steers by, and the star in our logo. Polaris is everything Ad Astra stands for in one package: unlimited training, meaning every session we offer, up to 6 a week (3 skills and 3 performance), plus our full standard of coaching, and the path we’ve built for athletes who want to go as far as they can. There is nothing else like it in the country.' },
+    { name: 'Rigel', price: '$160', per: 'a month', tag: '1x a week (4 sessions/mo) · In-season',
+      blurb: 'The blue supergiant at the foot of Orion the hunter, and the brightest star in that constellation. Its name means “the foot.” Rigel keeps you on your feet during your season: one session a week to stay strong, sharp and healthy while you compete.' },
+    { name: 'Sirius', price: '$300', per: 'a month', tag: '2x a week (8 sessions/mo) · Performance or skills',
+      blurb: 'The brightest star in the night sky. Sirius is where you start to shine: focused, consistent work that makes you the brightest athlete on the field. Two sessions a week of performance or skills training.' },
+    { name: 'Antares', price: '$400', per: 'a month', tag: '3x a week (12 sessions/mo) · Performance or skills',
+      blurb: 'The fiery red star whose name means “rival of Mars,” the god of war. Antares is for the athlete with a warrior’s identity who wants more, and is willing to fight for it. Three sessions a week of performance or skills training.' },
+    { name: 'Nova', price: '$180', per: 'per athlete', tag: 'Teams',
+      blurb: 'A nova is a star that suddenly becomes dramatically brighter. Nova is our team package: a whole roster training together and lighting up at once.' },
+  ],
+  partnerPTs: ['Edward Benitez', 'Megan Wardyn'],
+};

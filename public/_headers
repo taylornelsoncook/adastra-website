@@ -3,3 +3,6 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+/legacy/*
+  X-Robots-Tag: noindex, nofollow

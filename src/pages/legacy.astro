@@ -1,0 +1,198 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+// Hidden page: not in the menu, footer or sitemap, and marked noindex. Share the link directly.
+import { legacy as L, contactHref, bookingNote } from '../site.config';
+
+const reserve = L.depositUrl || contactHref('Reserve a Legacy spot');
+const steps = [
+  { t: 'Pick your package.', d: 'Whatever you sign up for, that package’s price is yours to keep.' },
+  { t: 'Your price is locked.', d: 'Every time you come to train in that package, you pay the price you joined at, no matter what the price is on the wall.' },
+  { t: 'The lock follows the package.', d: 'Your locked price belongs to the package you bought. If you switch to a different package, you pay that package’s price on the day you switch.' },
+];
+const inSeason = [
+  'Pay the Rigel rate while you’re in season.',
+  'Come back to your original package within 30 days of your season ending, and you pay your original locked price again.',
+  'One in-season drop per year, for up to 4 months.',
+  'Show us your team roster or season schedule when you make the switch.',
+  'If you don’t come back within 30 days, your original lock ends, and you rejoin that package at current prices.',
+];
+const fine = [
+  'Your membership agreement lists your locked package, your track (performance or skills) and your locked price.',
+  'The lock covers your package only. Add-ons such as personal training, camps and clinics are priced separately at current rates.',
+  'The lock is for you. It can’t be transferred, shared or sold.',
+  'Your locked price requires autopay. A missed payment that isn’t fixed within 30 days counts as a lapse, and the lock ends.',
+];
+const faqs = [
+  { q: 'What is the Ad Astra Legacy Discount?', a: 'When you join as one of our first 100 members, the price you pay for your package is locked for life. We will raise prices as we grow. Yours will not move.' },
+  { q: 'Who can get Legacy pricing?', a: `Our first ${L.spots} members only. Once the founding ${L.spots} spots are gone, they’re gone.` },
+  { q: 'How do I reserve a Legacy spot?', a: `Reserve with a ${L.deposit} deposit. It holds one of the ${L.spots} founding spots and your package’s Legacy price. The deposit is non-refundable, and it’s credited to your first month once we open.` },
+  { q: 'Can I keep my price during my season?', a: 'Yes. Once a year you can drop to Rigel (1x a week) for up to 4 months during your season and keep your Legacy price on your original package, as long as you come back within 30 days of your season ending.' },
+  { q: 'What if I get injured?', a: 'You can pause your membership for up to 2 months a year for an injury and keep your lock. If you rehab with a physical therapist in the Ad Astra partner network, your pause can run longer while you’re in their care.' },
+  { q: 'When does my Legacy price end?', a: 'Your Legacy price stays locked as long as your membership stays active. If you cancel, or your membership lapses, the lock ends and you rejoin at current prices.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base
+  title="Legacy Discount: Founders Price Lock"
+  description={`Lock your Ad Astra Human Performance training price for life. Legacy pricing is for our first ${L.spots} members, reserved with a ${L.deposit} deposit.`}
+  schema={[faqSchema]}
+  noindex
+>
+  <section class="section section--glow">
+    <div class="wrap legacyhero">
+      <div>
+        <span class="eyebrow">Legacy Discount · First {L.spots} members</span>
+        <h1 class="metal">Your price. For life.</h1>
+        <p class="lead">
+          When you join Ad Astra Human Performance, the price you pay for your package is locked for life.
+          We will raise prices as we grow. Yours will not move.
+        </p>
+        <div class="btn-row">
+          <a href={reserve} class="btn btn--primary" data-package="legacy-deposit">Reserve a spot · {L.deposit} deposit</a>
+          <a href="#packages" class="btn btn--ghost">See the packages</a>
+        </div>
+        {!L.depositUrl && <p class="muted note">{bookingNote}</p>}
+      </div>
+      <div class="card offer">
+        <span class="eyebrow">Founding spots</span>
+        <p class="offer__big">{L.spots}</p>
+        <p class="offer__lbl">members only</p>
+        <p class="offer__price">{L.deposit} deposit holds your spot and your price</p>
+        <a href={reserve} class="btn btn--primary" data-package="legacy-deposit">Reserve my spot</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">How it works</span>
+        <h2>Lock it in once.</h2>
+      </div>
+      <div class="grid grid--3">
+        {steps.map((s, i) => <div class="card"><span class="num">{i + 1}</span><h3>{s.t}</h3><p class="muted">{s.d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--glow" id="packages">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:40px">
+        <span class="eyebrow">The packages</span>
+        <h2>Every package is named for a star.</h2>
+        <p class="lead">Whichever one you join with, its price is yours for life.</p>
+      </div>
+      <div class="stars">
+        {L.packages.map((p) => (
+          <article class={`card star${p.featured ? ' star--featured' : ''}`}>
+            <span class="eyebrow">{p.tag}</span>
+            <h3 class="star__name">{p.name}</h3>
+            <p class="star__price">{p.price} <span>{p.per}</span></p>
+            <p class="muted">{p.blurb}</p>
+            <p class="star__lock">Locked at {p.price}{p.per === 'per athlete' ? ' per athlete' : ''} for life</p>
+          </article>
+        ))}
+      </div>
+      <div class="narrow center example">
+        <p class="muted">
+          Sirius and Antares members choose a track, performance or skills. Your membership records both your package and your track,
+          and your locked price stays the same if you switch tracks within your package.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <span class="eyebrow">Example</span>
+      <h2>How the lock plays out.</h2>
+      <p>An athlete joins with Polaris at $600. Years later Polaris costs more for new members. That athlete still pays $600 every time they train on Polaris.</p>
+      <p class="muted">If the same athlete later wants only Sirius skills twice a week, they pay the Sirius price in effect on the day they switch. Their $600 lock covers Polaris, not every package.</p>
+    </div>
+  </section>
+
+  <section class="section section--glow">
+    <div class="wrap narrow">
+      <span class="eyebrow">In season</span>
+      <h2>Drop to Rigel and keep your price.</h2>
+      <p class="muted">Your sport comes first during the season. Once a year, you can move down to Rigel (1x a week) for your season and keep your Legacy price on your original package.</p>
+      <ul class="check-list big">{inSeason.map((i) => <li>{i}</li>)}</ul>
+      <p class="muted">Example: a Polaris member locked at $600 plays spring baseball. They drop to Rigel for the season, then return to Polaris two weeks after their last game, still at $600.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Keeping your lock</h3>
+          <p class="muted">Your Legacy price stays locked as long as your membership stays active. If you cancel, or your membership lapses, the lock ends and you rejoin at current prices.</p>
+        </div>
+        <div class="card">
+          <h3>Who can get it</h3>
+          <p class="muted">Legacy pricing is for our first {L.spots} members only. Once the founding {L.spots} spots are gone, they&rsquo;re gone.</p>
+        </div>
+        <div class="card">
+          <h3>How to claim your spot</h3>
+          <p class="muted"><strong>Reserve with a {L.deposit} deposit.</strong> It holds one of the {L.spots} founding spots and your package&rsquo;s Legacy price. The deposit is non-refundable, and it&rsquo;s credited to your first month once we open.</p>
+          <p class="muted"><strong>Start when we open.</strong> When the facility opens, your membership begins at your locked Legacy package price, and your first month is {L.deposit} less.</p>
+        </div>
+        <div class="card">
+          <h3>Injured? Pause and keep your price</h3>
+          <p class="muted">You can pause your membership for up to 2 months a year for an injury and keep your lock.</p>
+          <p class="muted">Rehabbing with a physical therapist in the Ad Astra partner network? Your pause can run longer while you&rsquo;re in their care, so you can come back at full strength without losing your price.</p>
+          <p class="muted">Ad Astra partner physical therapists (more being added): {L.partnerPTs.join(', ')}.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap narrow">
+      <h2>The fine print</h2>
+      <ul class="check-list">{fine.map((f) => <li>{f}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2>Legacy questions</h2>
+      <div class="faq">
+        {faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Claim one of the founding 100." text={`A ${L.deposit} deposit locks your spot and your package price for life.`} />
+</Base>
+
+<style>
+  .legacyhero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center; }
+  .legacyhero .lead { margin-bottom: 28px; }
+  .note { font-size: .9rem; margin-top: 14px; }
+  .offer { text-align: center; border-color: var(--green-deep); }
+  .offer__big { font: 700 4.5rem/1 var(--display); color: var(--green-bright); margin: 8px 0 0; }
+  .offer__lbl { letter-spacing: .24em; text-transform: uppercase; color: var(--steel-muted); font-size: .85rem; }
+  .offer__price { font: 600 1.05rem/1.4 var(--display); margin: 12px 0 20px; }
+  .offer .btn { width: 100%; }
+  .num { font: 700 2rem/1 var(--display); color: var(--green-bright); display: block; margin-bottom: 12px; }
+  .stars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 980px; margin: 0 auto; }
+  .star--featured { grid-column: 1 / -1; border-color: var(--green-deep); }
+  .star__name { font-size: 1.8rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .star__price { font: 700 1.6rem/1.2 var(--display); margin-bottom: 14px; }
+  .star__price span { font: 500 .95rem var(--sans); color: var(--steel-muted); }
+  .star__lock { color: var(--green-bright); font-weight: 600; margin-top: 8px; }
+  .example { margin-top: 32px; }
+  .narrow { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .big li { font-size: 1.05rem; margin-bottom: 12px; }
+  .faq { border-top: 1px solid var(--line); margin-top: 20px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; padding: 18px 0; font-weight: 600; }
+  details p { color: var(--steel-muted); padding-bottom: 18px; margin: 0; }
+  @media (max-width: 820px) { .legacyhero, .stars { grid-template-columns: 1fr; } }
+</style>

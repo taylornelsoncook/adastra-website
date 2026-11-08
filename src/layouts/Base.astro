@@ -8,8 +8,9 @@ interface Props {
   title?: string;
   description?: string;
   schema?: object[];
+  noindex?: boolean; // hidden page: keep it out of Google (also excluded from the sitemap in astro.config.mjs)
 }
-const { title, description = site.description, schema = [] } = Astro.props;
+const { title, description = site.description, schema = [], noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | Athlete Training in Englewood, CO`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const loc = site.location;
@@ -44,6 +45,7 @@ const business = {
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#070908" />
     <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
