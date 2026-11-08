@@ -221,7 +221,7 @@ export const legacy = {
   deposit: '$100',
   depositUrl: '',
   packages: [
-    { name: 'Polaris', price: '$600', per: 'a month', tag: 'Unlimited · Our flagship', featured: true,
+    { name: 'Polaris', price: '$600', per: 'a month', tag: 'Unlimited · Our flagship · Opens with our facility', featured: true,
       blurb: 'The North Star, the one fixed point every navigator steers by, and the star in our logo. Polaris is everything Ad Astra stands for in one package: unlimited training, meaning every session we offer, up to 6 a week (3 skills and 3 performance), plus our full standard of coaching, and the path we’ve built for athletes who want to go as far as they can. There is nothing else like it in the country.' },
     { name: 'Rigel', price: '$160', per: 'a month', tag: '1x a week (4 sessions/mo) · In-season',
       blurb: 'The blue supergiant at the foot of Orion the hunter, and the brightest star in that constellation. Its name means “the foot.” Rigel keeps you on your feet during your season: one session a week to stay strong, sharp and healthy while you compete.' },
