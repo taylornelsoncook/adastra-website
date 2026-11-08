@@ -155,6 +155,11 @@ export const teamTraining = {
   buyUrl: '', // optional Mindbody link for team packages; otherwise buttons open the lead form
 };
 
+// Kings team contract (Kings 2031 and 2032 families). Shown on the Teams page.
+export const kingsContract = {
+  buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/cntr_11kPhPxZcbbQxLGA86?mbo_src=links-shortcuts', // Mindbody, 2026-11-08
+};
+
 // College athlete training. Its own Mindbody checkout.
 export const college = {
   buyUrl: 'https://go.mindbodyonline.com/book/app/pricing/bus_11kPhPxZcbbQxqebJj/po_11kPhPxZcbbQxLmu4o?mbo_src=links-shortcuts', // Mindbody, 2026-11-03
