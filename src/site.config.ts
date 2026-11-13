@@ -38,7 +38,7 @@ export const site = {
 // While a link is empty, the button emails the coach instead.
 export const forms = {
   contact: '', // general "Ask a coach" contact form. Shown on the Contact page.
-  adultWaitlist: '', // waitlist for the adult group program
+  adultWaitlist: 'https://forms.gle/2Kfd14onUkuYVbUj7', // adult fitness interest form; waitlist for the adult group program
 };
 
 // Adults: one-on-one personal training now; an adult group program is planned.
@@ -134,20 +134,6 @@ export const packages: Package[] = [
   },
 ];
 
-// $1 speed evaluation: the low-risk first step for new athletes.
-export const evaluation = {
-  price: '$1',
-  name: 'Speed evaluation',
-  // TODO: a Mindbody checkout link for the $1 evaluation. Until then the button opens the lead form.
-  buyUrl: '',
-  includes: [
-    'Full 40-yard dash, timed',
-    'Broad jump',
-    'Vertical jump',
-    'Movement screen with a coach',
-  ],
-};
-
 // Team training: discounted pricing for groups of 15 or more athletes.
 export const teamTraining = {
   minAthletes: 15,
@@ -210,12 +196,8 @@ export const faqs: { q: string; a: string }[] = [
     a: 'Packages are month to month. To cancel, give us 14 days\u2019 notice before your next billing date. Exceptions are at the owner\u2019s discretion.',
   },
   {
-    q: 'What is the $1 speed evaluation?',
-    a: 'A one-time session where a coach times a full 40-yard dash, tests your broad and vertical jump, and screens how you move. You leave knowing your numbers. It costs $1.',
-  },
-  {
     q: 'How do I get started?',
-    a: 'Book a $1 speed evaluation or pick a package, then book into your group on the schedule. Online booking opens soon; until then, email taylor@adastrahp.org and we will get you set up.',
+    a: 'Pick a package, then book into your group on the schedule. Online booking opens soon; until then, email taylor@adastrahp.org and we will get you set up.',
   },
 ];
 

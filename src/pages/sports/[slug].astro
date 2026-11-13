@@ -1,10 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
-import EvalOffer from '../../components/EvalOffer.astro';
 import PackageCards from '../../components/PackageCards.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { sports, training, type Sport } from '../../sports';
-import { schedule, site } from '../../site.config';
+import { contactHref, schedule, site } from '../../site.config';
 
 export function getStaticPaths() {
   return sports.map((s) => ({ params: { slug: s.slug }, props: { s } }));
@@ -29,7 +28,7 @@ const service = {
 ---
 <Base
   title={`${s.name} Performance Training in ${loc}`}
-  description={`${s.name} speed, strength and power training in ${loc}. ${s.intro.split('. ')[0]}. Start with a $1 speed evaluation.`}
+  description={`${s.name} speed, strength and power training in ${loc}. ${s.intro.split('. ')[0]}. Coached 80-minute sessions, 8 or 12 a month.`}
   schema={[service, faqSchema]}
 >
   <section class="section section--glow">
@@ -38,8 +37,8 @@ const service = {
       <h1 class="metal">{s.headline}</h1>
       <p class="lead">{s.intro}</p>
       <div class="btn-row">
-        <a href="#evaluation" class="btn btn--primary">Book a $1 speed evaluation</a>
-        <a href="/packages/" class="btn btn--ghost">See packages</a>
+        <a href={contactHref(`${s.name} training`)} class="btn btn--primary">Contact us</a>
+        <a href="#packages" class="btn btn--ghost">See packages</a>
       </div>
     </div>
   </section>
@@ -74,7 +73,7 @@ const service = {
               { t: 'Strength', d: tr.strength },
             ].map((b) => (<div><dt>{b.t}</dt><dd>{b.d}</dd></div>))}
           </dl>
-          <p class="muted">Every athlete's program is set from their evaluation, age and season.</p>
+          <p class="muted">Every athlete's program is set from their testing, age and season.</p>
         </div>
       </div>
     </section>
@@ -94,8 +93,6 @@ const service = {
     </div>
   </section>
 
-  <EvalOffer sport={s.name} />
-
   {classes.length > 0 && (
     <section class="section">
       <div class="wrap narrow">
@@ -109,7 +106,7 @@ const service = {
     </section>
   )}
 
-  <section class="section section--glow">
+  <section class="section section--glow" id="packages">
     <div class="wrap">
       <div class="center" style="margin-bottom:40px"><span class="eyebrow">Packages</span><h2>Train every week.</h2></div>
       <PackageCards />

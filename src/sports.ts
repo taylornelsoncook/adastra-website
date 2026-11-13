@@ -182,7 +182,7 @@ export const sports: Sport[] = [
 ];
 
 // "Our focus" block on each sport page: one photo, a short summary, and one line per training area.
-// Written as what we focus on for the sport, not a session plan. Each athlete's program is set from their evaluation, age and season.
+// Written as what we focus on for the sport, not a session plan. Each athlete's program is set from their testing, age and season.
 export type Training = {
   photo: { src: string; small: string; alt: string; w: number; h: number };
   summary: string;

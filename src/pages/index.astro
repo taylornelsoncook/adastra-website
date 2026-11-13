@@ -5,8 +5,7 @@ import FaqList from '../components/FaqList.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ScheduleTable from '../components/ScheduleTable.astro';
 import ProofStrip from '../components/ProofStrip.astro';
-import EvalOffer from '../components/EvalOffer.astro';
-import { site, schedule } from '../site.config';
+import { site, schedule, contactHref } from '../site.config';
 import { sports } from '../sports';
 
 const pillars = [
@@ -33,7 +32,7 @@ const steps = [
         </p>
         <div class="btn-row">
           <a href="/packages/" class="btn btn--primary">Buy a package</a>
-          <a href="#evaluation" class="btn btn--ghost">$1 speed evaluation</a>
+          <a href={contactHref()} class="btn btn--ghost">Contact us</a>
         </div>
       </div>
       <div class="hero__art" aria-hidden="true">
@@ -43,8 +42,6 @@ const steps = [
   </section>
 
   <ProofStrip />
-
-  <EvalOffer />
 
   <section class="section">
     <div class="wrap">
