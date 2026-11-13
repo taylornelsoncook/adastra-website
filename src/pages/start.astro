@@ -4,14 +4,14 @@ import { contactHref, forms, site } from '../site.config';
 const href = contactHref();
 const ext = href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 ---
-<Base title="Contact" description="Ask a coach about Ad Astra training. Tell us about your athlete and we will recommend the right package and a $1 speed evaluation.">
+<Base title="Contact" description="Ask a coach about Ad Astra training. Tell us about your athlete and we will recommend the right package and group.">
   <section class="section section--glow">
     <div class="wrap center">
       <span class="eyebrow">Talk to a coach</span>
       <h1 class="metal">Ask about training.</h1>
       <p class="lead">
-        Tell us about your athlete, their sport and their goals. A coach will get back to you with the right package and a time
-        for your $1 speed evaluation.
+        Tell us about your athlete, their sport and their goals. A coach will get back to you with the right package and
+        group for them.
       </p>
       <div class="btn-row">
         <a href={href} class="btn btn--primary" {...ext}>{forms.contact ? 'Fill out the contact form' : 'Ask about training'}</a>
