@@ -47,9 +47,16 @@ export const adults = {
   personalTrainingUrl: '', // optional booking link (e.g. Mindbody) for personal training
 };
 
-// Where a button goes when it has no link yet: an email to the coach with a subject line.
+// On-site contact form (Contact page). Submissions are emailed to taylor@adastrahp.org by Web3Forms (free).
+// Paste the access key Web3Forms emails you. The key is meant to be public. While it is empty, the page shows the email address instead.
+export const contactForm = {
+  accessKey: '',
+  subject: 'New website inquiry: Ad Astra',
+};
+
+// Where a "Contact us" button goes: the on-site form when it is set up, otherwise an email to the coach.
 export const contactHref = (subject = 'Training inquiry') =>
-  forms.contact || site.links.leadForm || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+  (contactForm.accessKey ? '/start/#contact-form' : '') || forms.contact || site.links.leadForm || `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 // Shown under buttons while booking links are off.
 export const bookingNote = `Online booking opens soon. Email ${site.email} and we'll get you set up.`;
 
