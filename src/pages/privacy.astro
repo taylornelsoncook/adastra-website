@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+const updated = 'November 14, 2026';
+---
+<Base title="Privacy Policy" description="How Ad Astra Human Performance collects, uses and protects the information you share through our website, sign-up forms and emails.">
+  <section class="section section--glow">
+    <div class="wrap legal">
+      <span class="eyebrow">Legal</span>
+      <h1 class="metal">Privacy Policy</h1>
+      <p class="muted">Last updated: {updated}</p>
+
+      <p>
+        This policy explains what information {site.name} ("we," "us") collects when you use our contact form, join our
+        waitlist for online programs, sign up through our Instagram or Facebook forms, or email us, and how we use it.
+      </p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li>
+          <strong>Information you give us:</strong> your name, email, phone number (optional), your athlete's name and age,
+          your athlete's graduation year, which training you are interested in, and anything you write in your message.
+        </li>
+        <li>
+          <strong>Basic website data:</strong> we may use cookies and the Meta Pixel to understand which ads and pages people
+          respond to. This data does not include your name.
+        </li>
+      </ul>
+
+      <h2>Who our forms are for</h2>
+      <p>
+        Our forms are meant for parents, guardians and adult athletes (18+). If an athlete is under 18, a parent or guardian
+        should fill out the form. We do not knowingly collect personal information directly from children under 13. If you
+        think a child has sent us their information, email us and we will delete it.
+      </p>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To answer your questions and set up training.</li>
+        <li>To send you the emails you asked for: training tips, program updates and waitlist news.</li>
+        <li>To tell you about in-person training and online programs.</li>
+        <li>To understand which of our ads and posts are useful, so we can improve them.</li>
+      </ul>
+
+      <h2>What we never do</h2>
+      <p>
+        We never sell or rent your information. We share it only with services that help us run the business, and only as
+        needed for them to do that work: Web3Forms (delivers contact form messages to our inbox), Google (our email), and Meta
+        (sign-up forms and ad measurement).
+      </p>
+
+      <h2>Your choices</h2>
+      <ul>
+        <li>You can ask us to stop emailing you at any time, and we will.</li>
+        <li>You can ask us to see, correct or delete your information by emailing <a href={`mailto:${site.email}`}>{site.email}</a>.</li>
+      </ul>
+
+      <h2>How long we keep it</h2>
+      <p>We keep your information while we are working with you or you are on our list, and delete it within 30 days if you ask us to.</p>
+
+      <h2>Contact</h2>
+      <p>
+        {site.name}<br />
+        {site.location.city}, {site.location.region}<br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .legal { max-width: 760px; }
+  .legal h2 { margin-top: 2em; }
+  .legal li { margin: 0.4em 0; }
+</style>
