@@ -1,0 +1,86 @@
+---
+import { contactForm, site } from '../site.config';
+import { sports } from '../sports';
+const interests = [...sports.map((s) => s.name), 'College athlete training', 'Team training', 'Adult personal training', 'Other'];
+---
+<form class="cf" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+  <input type="hidden" name="access_key" value={contactForm.accessKey} />
+  <input type="hidden" name="subject" value={contactForm.subject} />
+  <input type="hidden" name="from_name" value="Ad Astra website" />
+  <input type="hidden" name="redirect" value={`${site.url}/start/?sent=1`} />
+  <!-- Spam trap: people never see or fill this; bots do. -->
+  <input type="checkbox" name="botcheck" class="cf__trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="cf__row">
+    <label>Your name<input name="name" required autocomplete="name" /></label>
+    <label><span>Athlete's name <span class="opt">(if different)</span></span><input name="athlete_name" autocomplete="off" /></label>
+  </div>
+  <div class="cf__row">
+    <label>Email<input type="email" name="email" required autocomplete="email" /></label>
+    <label>Phone<input type="tel" name="phone" autocomplete="tel" /></label>
+  </div>
+  <div class="cf__row">
+    <label>Athlete's age<input name="athlete_age" inputmode="numeric" maxlength="3" /></label>
+    <label>Interested in
+      <select name="interest" required>
+        <option value="">Choose one</option>
+        {interests.map((i) => <option>{i}</option>)}
+      </select>
+    </label>
+  </div>
+  <label>How can we help?<textarea name="message" rows="5" required placeholder="Goals, season, schedule, anything we should know."></textarea></label>
+
+  <button type="submit" class="btn btn--primary cf__btn">Send message</button>
+  <p class="cf__status" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (form) {
+    const status = form.querySelector('.cf__status') as HTMLElement;
+    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    if (new URLSearchParams(location.search).get('sent') === '1') {
+      status.textContent = 'Thanks. Your message is in, and a coach will get back to you soon.';
+      status.dataset.state = 'ok';
+    }
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      btn.disabled = true;
+      status.dataset.state = '';
+      status.textContent = 'Sending...';
+      try {
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || 'Send failed');
+        form.reset();
+        status.dataset.state = 'ok';
+        status.textContent = 'Thanks. Your message is in, and a coach will get back to you soon.';
+      } catch {
+        status.dataset.state = 'err';
+        status.innerHTML = 'Something went wrong. Please email <a href="mailto:taylor@adastrahp.org">taylor@adastrahp.org</a> instead.';
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .cf { display: grid; gap: 18px; text-align: left; max-width: 720px; margin: 0 auto; }
+  .cf__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .cf label { display: grid; gap: 8px; font-weight: 600; font-size: .95rem; color: var(--steel); }
+  .cf .opt { color: var(--steel-muted); font-weight: 400; }
+  .cf input, .cf select, .cf textarea {
+    font: inherit; font-weight: 400; color: var(--steel); background: var(--surface);
+    border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px 14px; width: 100%; box-sizing: border-box;
+  }
+  .cf textarea { resize: vertical; min-height: 130px; }
+  .cf input:focus, .cf select:focus, .cf textarea:focus { outline: 2px solid var(--green-bright); outline-offset: 1px; border-color: transparent; }
+  .cf__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .cf__btn { justify-self: start; min-width: 200px; }
+  .cf__status { margin: 0; color: var(--steel-muted); }
+  .cf__status[data-state='ok'] { color: var(--green-bright); }
+  .cf__status[data-state='err'] { color: #e8a0a0; }
+  @media (max-width: 640px) { .cf__row { grid-template-columns: 1fr; } .cf__btn { justify-self: stretch; } }
+</style>
