@@ -50,7 +50,7 @@ export const adults = {
 // On-site contact form (Contact page). Submissions are emailed to taylor@adastrahp.org by Web3Forms (free).
 // Paste the access key Web3Forms emails you. The key is meant to be public. While it is empty, the page shows the email address instead.
 export const contactForm = {
-  accessKey: '',
+  accessKey: 'bd58f418-2563-4eda-897c-5aa3e5bde524',
   subject: 'New website inquiry: Ad Astra',
 };
 
